@@ -4,6 +4,8 @@ import random
 import sys
 import threading
 import time
+import os
+import subprocess
 
 class QuatermainGUI:
     def __init__(self, root, engine):
@@ -20,9 +22,10 @@ class QuatermainGUI:
         self.arcade_font_btn = ("Courier New", 14, "bold")
         
         # --- SOUND & FX KONTROLLE ---
-        self.fx_muted = False  # Zusätzlicher Schalter für die Effekte
+        self.fx_muted = False  
         self.music_thread = None
         self.stop_music_event = threading.Event()
+        self.current_playing_track = None  # Speichert, ob gerade "normal" oder "boss" läuft
         
         # --- DYNAMIC THEME COLORS ---
         self.type_colors = {
@@ -45,8 +48,8 @@ class QuatermainGUI:
         
         self.player_name = "AND"
         
-        # Starte die Titelmelodie direkt beim Laden
-        self.start_title_music()
+        # Starte das normale Title-Theme direkt beim Laden
+        self.start_music_loop("main-theme.mp3")
         self.show_main_menu()
 
     def get_theme_color(self, q_data):
@@ -56,72 +59,81 @@ class QuatermainGUI:
         q_type = q_data.get("question_type", "multiple_choice")
         return self.type_colors.get(q_type, "#00FF00")
 
-    def start_title_music(self):
-        """Aktiviert den parallelen Hintergrund-Thread für das Title Theme."""
-        if self.engine.sound_muted:
-            return
-        
-        if self.music_thread and self.music_thread.is_alive():
+    def get_audio_path(self, filename):
+        """Ermittelt den absoluten Pfad zu einer Sounddatei im audio/-Ordner."""
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        return os.path.join(base_dir, "audio", filename)
+
+    def start_music_loop(self, track_name):
+        """Startet eine Hintergrundmusik im Loop, falls sie nicht schon läuft."""
+        if self.engine.sound_muted or self.current_playing_track == track_name:
             return
             
+        # Falls schon Musik läuft, erst sauber beenden
+        self.stop_title_music()
+        
+        self.current_playing_track = track_name
         self.stop_music_event.clear()
-        self.music_thread = threading.Thread(target=self._loop_title_music, daemon=True)
+        self.music_thread = threading.Thread(target=self._loop_music_thread, args=(track_name,), daemon=True)
         self.music_thread.start()
 
-    def _loop_title_music(self):
-        """Die native 8-Bit Titelmelodie-Schleife für Windows und Mac."""
-        import subprocess
-        
-        # Eine treibende Arcade-Bassline (Frequenz, Dauer in ms)
-        melody = [
-            (293, 150), (293, 150), (349, 200), (293, 150),
-            (261, 150), (261, 150), (329, 200), (261, 150),
-            (220, 150), (220, 150), (261, 200), (220, 150),
-            (293, 300), (329, 150), (349, 150), (392, 150)
-        ]
+    def _loop_music_thread(self, track_name):
+        """Spielt den ausgewählten Track in einer Endlosschleife ab (plattformunabhängig)."""
+        sound_path = self.get_audio_path(track_name)
         
         while not self.stop_music_event.is_set():
-            for freq, duration in melody:
-                if self.stop_music_event.is_set():
-                    break
-                try:
-                    if sys.platform == "win32":
-                        import winsound
-                        winsound.Beep(freq, duration)
-                    else:
-                        # Mac-Alternative: AppleScript erzeugt den System-Takt im Hintergrund
-                        subprocess.run(["osascript", "-e", "beep"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                except Exception:
-                    pass
-                time.sleep(duration / 1000.0)
+            if not os.path.exists(sound_path):
+                break
+                
+            if sys.platform == "win32":
+                # Windows native MP3/Wav Wiedergabe-Logik (Fallback)
+                import winsound
+                try: winsound.PlaySound(sound_path, winsound.SND_FILENAME)
+                except Exception: time.sleep(1)
+            else:
+                # Mac native Wiedergabe via afplay. Wir warten, bis der Track vorbei ist
+                proc = subprocess.Popen(["afplay", sound_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                while proc.poll() is None:
+                    if self.stop_music_event.is_set():
+                        proc.terminate()
+                        break
+                    time.sleep(0.2)
+            time.sleep(0.1)
 
     def stop_title_music(self):
-        """Stoppt die Hintergrundmusik sofort."""
+        """Signalisiert dem Musik-Thread, sofort zu stoppen und wartet auf das Ende."""
         self.stop_music_event.set()
+        self.current_playing_track = None
 
     def play_sound(self, sound_type):
-        """Erzeugt Soundeffekte für Windows (Beeps) und Mac (Sprach-Synthese)."""
+        """Feuert einmalige Soundeffekte ab, ohne das UI zu blockieren."""
         if self.fx_muted:
             return
+            
+        filename_map = {
+            "correct": "correct.mp3",
+            "wrong": "wrong.mp3",
+            "game_over": "game-over.mp3",
+            "success": "quest-success.mp3",
+            "start": "start-level.mp3"
+        }
+        
+        filename = filename_map.get(sound_type)
+        if not filename:
+            return
+            
+        sound_path = self.get_audio_path(filename)
+        if not os.path.exists(sound_path):
+            return
+            
         try:
             if sys.platform == "win32":
                 import winsound
-                if sound_type == "correct":
-                    winsound.Beep(523, 80)   # C5
-                    winsound.Beep(659, 80)   # E5
-                    winsound.Beep(784, 80)   # G5
-                    winsound.Beep(1046, 250) # C6
-                elif sound_type == "wrong":
-                    winsound.Beep(220, 300)  # Tiefes A
-                    winsound.Beep(147, 500)  # Extrem tiefes D
+                if sound_type == "correct": winsound.Beep(600, 150)
+                elif sound_type == "wrong": winsound.Beep(200, 400)
             else:
-                import subprocess
-                if sound_type == "correct":
-                    # Mac macht ein fröhliches Arcade-"Boing"
-                    subprocess.Popen(["say", "-v", "Boing", "O K"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                elif sound_type == "wrong":
-                    # Mac trötet ein dramatisches "No" über Bad News
-                    subprocess.Popen(["say", "-v", "Bad_News", "No"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                # Mac feuert den Sound asynchron im Hintergrund ab
+                subprocess.Popen(["afplay", sound_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except Exception:
             pass
 
@@ -132,10 +144,7 @@ class QuatermainGUI:
     def toggle_language(self):
         """Wechselt die Sprache und zwingt die Engine, die Ordner neu einzulesen."""
         self.language = "en" if self.language == "de" else "de"
-        
-        # Fliegender Wechsel im Dateisystem
         self.engine.load_database(self.language)
-        
         self.clear_screen()
         if hasattr(self, "in_game") and self.in_game:
             self.render_question()
@@ -148,7 +157,12 @@ class QuatermainGUI:
         if self.engine.sound_muted:
             self.stop_title_music()
         else:
-            self.start_title_music()
+            if hasattr(self, "in_game") and self.in_game:
+                q_data = self.engine.get_current_question()
+                track = "boss-theme.mp3" if (q_data and q_data.get("difficulty", 1) >= 5) else "main-theme.mp3"
+                self.start_music_loop(track)
+            else:
+                self.start_music_loop("main-theme.mp3")
         self.clear_screen()
         self.show_main_menu()
 
@@ -180,6 +194,9 @@ class QuatermainGUI:
         self.in_game = False
         self.clear_screen()
         
+        # Wenn wir ins Hauptmenü zurückkehren, stellen wir sicher, dass das normale Theme läuft
+        self.start_music_loop("main-theme.mp3")
+        
         # --- TOP CONTROLS ---
         lang_btn_text = "SPRACHE: DE" if self.language == "de" else "LANGUAGE: EN"
         btn_lang = ctk.CTkButton(
@@ -188,7 +205,6 @@ class QuatermainGUI:
         )
         btn_lang.place(x=760, y=10)
         
-        # Musik Schalter
         sound_btn_text = "SOUND: ON" if not self.engine.sound_muted else "SOUND: OFF"
         btn_sound = ctk.CTkButton(
             self.root, text=sound_btn_text, font=("Courier New", 11),
@@ -196,7 +212,6 @@ class QuatermainGUI:
         )
         btn_sound.place(x=640, y=10)
         
-        # FX Schalter
         fx_btn_text = "FX: ON" if not self.fx_muted else "FX: OFF"
         btn_fx = ctk.CTkButton(
             self.root, text=fx_btn_text, font=("Courier New", 11),
@@ -233,8 +248,9 @@ class QuatermainGUI:
         mixed_text = "Alle Ebenen gemischt" if self.language == "de" else "All Levels mixed"
         options_list = [mixed_text] + [self.format_module_display(m) for m in raw_modules]
         
+        # JETZT NEU: dropdown_font sorgt für 80s-Look im aufklappenden Menü!
         self.module_dropdown = ctk.CTkOptionMenu(
-            self.root, values=options_list, font=self.arcade_font_text, 
+            self.root, values=options_list, font=self.arcade_font_text, dropdown_font=self.arcade_font_text,
             fg_color="#1E1E1E", button_color="#00FF00", button_hover_color="#00CC00"
         )
         self.module_dropdown.pack(pady=10)
@@ -258,6 +274,9 @@ class QuatermainGUI:
             
         self.engine.start_new_quest(selected_module=selected_mod, num_questions=30)
         self.in_game = True
+        
+        # Feuere den Level-Start Jingle ab ("Ready... Fight!")
+        self.play_sound("start")
         self.render_question()
 
     def render_question(self):
@@ -268,16 +287,31 @@ class QuatermainGUI:
             self.show_game_over_screen()
             return
             
+        # --- FLIEGENDER SOUND-WECHSEL BEI BOSS-LEVEL (DIFF 5) ---
+        if q_data.get("difficulty", 1) >= 5:
+            self.start_music_loop("boss-theme.mp3")
+        else:
+            self.start_music_loop("main-theme.mp3")
+            
         # --- STATUS BAR ---
         status_frame = ctk.CTkFrame(self.root, height=40, fg_color="#111111")
         status_frame.pack(fill="x", side="top")
         
+        # JETZT NEU: Der geschmeidige Quit-Button direkt oben links
+        quit_btn_text = "❌ MENÜ" if self.language == "de" else "❌ QUIT"
+        btn_quit = ctk.CTkButton(
+            status_frame, text=quit_btn_text, font=("Courier New", 12, "bold"),
+            fg_color="#331111", hover_color="#551111", text_color="#FF3333",
+            width=70, height=26, command=self.show_main_menu
+        )
+        btn_quit.pack(side="left", padx=10)
+        
         hearts = "HP " * self.engine.lives
         lives_label = ctk.CTkLabel(status_frame, text=f"LIVES: {hearts}", font=("Courier New", 14, "bold"), text_color="#FF3333")
-        lives_label.pack(side="left", padx=20)
+        lives_label.pack(side="left", padx=10)
         
         player_display = ctk.CTkLabel(status_frame, text=f"PLAYER: {self.player_name}", font=("Courier New", 14, "bold"), text_color="#FFFFFF")
-        player_display.pack(side="left", padx=50)
+        player_display.pack(side="left", padx=40)
         
         score_label = ctk.CTkLabel(status_frame, text=f"SCORE: {self.engine.score}", font=("Courier New", 14, "bold"), text_color="#00FF00")
         score_label.pack(side="right", padx=20)
@@ -325,11 +359,8 @@ class QuatermainGUI:
         self.clear_screen()
         
         theme_color = self.get_theme_color(q_data)
-        
-        # 1. Spezifischer Override aus der JSON abgreifen (Falls vorhanden)
         specific_feedback = q_data.get("correct_feedback" if is_correct else "incorrect_feedback")
         
-        # 2. Falls kein Spezial-Feedback in JSON hinterlegt ist -> Nutze die getrennten Sprachpools
         if specific_feedback:
             zitat = specific_feedback
         else:
@@ -392,11 +423,14 @@ class QuatermainGUI:
     def show_game_over_screen(self):
         self.clear_screen()
         self.engine.save_highscore(self.player_name)
+        self.stop_title_music()
         
         if self.engine.lives > 0:
+            self.play_sound("success")
             end_text = "QUEST ERFOLGREICH!\n\nDu hast das goldene Python-Idol geborgen!" if self.language == "de" else "QUEST SUCCESSFUL!\n\nYou recovered the golden Python idol!"
             end_color = "#00FF00"
         else:
+            self.play_sound("game_over")
             end_text = "GAME OVER\n\nDer Tempel stürzt über Quatermain zusammen..." if self.language == "de" else "GAME OVER\n\nThe temple collapses over Quatermain..."
             end_color = "#FF3333"
             
