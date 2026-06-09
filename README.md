@@ -1,4 +1,9 @@
 # 🤠 Quatermain's Python Quest – PCEP Arcade 🐍
+![Under Construction](https://img.shields.io/badge/Project-Under%20Construction-orange?style=for-the-badge&logo=construction)
+
+*The Python Temple is currently being excavated. Traps are being armed, synths are being tuned, and the question database is expanding daily.*
+
+---
 
 An interactive, 80s-inspired retro arcade quiz game designed to conquer the OpenEDG Python Institute PCEP-30-02 certification! Join Allan Quatermain in the depths of the Python Temple, dodge treacherous syntax traps, and recover the golden Python idol.
 
