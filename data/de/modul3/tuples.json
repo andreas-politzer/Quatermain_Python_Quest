@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M3_TUP_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "tuples",
+    "question": "Welcher Ausdruck erzeugt ein Tupel?",
+    "options": [
+      "(1, 2, 3)",
+      "[1, 2, 3]",
+      "{1, 2, 3}",
+      "\"1, 2, 3\""
+    ],
+    "correct": "(1, 2, 3)",
+    "explanation": "Tupel werden üblicherweise mit runden Klammern erstellt."
+  },
+  {
+    "id": "M3_TUP_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "tuple_indexing",
+    "question": "Was wird ausgegeben?\n\ndata = (10, 20, 30)\nprint(data[1])",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Error"
+    ],
+    "correct": "20",
+    "explanation": "Der Index 1 verweist auf das zweite Element."
+  },
+  {
+    "id": "M3_TUP_003",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "tuples",
+    "question": "Welche Aussage über Tupel ist korrekt?",
+    "options": [
+      "Tupel sind veränderbar",
+      "Tupel sind unveränderbar",
+      "Tupel können keine Zahlen enthalten",
+      "Tupel sind identisch zu Listen"
+    ],
+    "correct": "Tupel sind unveränderbar",
+    "explanation": "Nach der Erstellung können Tupel nicht verändert werden."
+  },
+  {
+    "id": "M3_TUP_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "tuple_indexing",
+    "question": "Was wird ausgegeben?\n\ndata = (\"A\", \"B\", \"C\")\nprint(data[-1])",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "Error"
+    ],
+    "correct": "C",
+    "explanation": "Der Index -1 liefert das letzte Element."
+  },
+  {
+    "id": "M3_TUP_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "tuples",
+    "question": "Was wird ausgegeben?\n\nprint(len((1, 2, 3, 4)))",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "Error"
+    ],
+    "correct": "4",
+    "explanation": "Das Tupel enthält vier Elemente."
+  },
+  {
+    "id": "M3_TUP_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "tuple_immutability",
+    "question": "Welche Exception tritt auf?\n\ndata = (1, 2, 3)\ndata[0] = 9",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "IndexError",
+      "KeyError"
+    ],
+    "correct": "TypeError",
+    "explanation": "Tupel sind unveränderbar. Elemente können nicht überschrieben werden."
+  },
+  {
+    "id": "M3_TUP_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "single_element_tuple",
+    "question": "Welcher Ausdruck erzeugt ein Tupel mit genau einem Element?",
+    "options": [
+      "(5)",
+      "(5,)",
+      "[5]",
+      "{5}"
+    ],
+    "correct": "(5,)",
+    "explanation": "Der Beistrich macht den Unterschied. (5) ist nur eine Zahl in Klammern."
+  },
+  {
+    "id": "M3_TUP_008",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "tuple_unpacking",
+    "question": "Was wird ausgegeben?\n\nx, y = (10, 20)\nprint(y)",
+    "options": [
+      "10",
+      "20",
+      "(10, 20)",
+      "Error"
+    ],
+    "correct": "20",
+    "explanation": "Beim Unpacking erhält y den zweiten Wert."
+  },
+  {
+    "id": "M3_TUP_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "tuple_concatenation",
+    "question": "Was wird ausgegeben?\n\nprint((1, 2) + (3, 4))",
+    "options": [
+      "(1, 2, 3, 4)",
+      "[1, 2, 3, 4]",
+      "(4, 6)",
+      "Error"
+    ],
+    "correct": "(1, 2, 3, 4)",
+    "explanation": "Mit + werden Tupel zu einem neuen Tupel zusammengefügt."
+  },
+  {
+    "id": "M3_TUP_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "tuple_unpacking",
+    "question": "Was wird ausgegeben?\n\nx, y, z = (1, 2, 3)\nprint(x + y + z)",
+    "options": [
+      "5",
+      "6",
+      "123",
+      "Error"
+    ],
+    "correct": "6",
+    "explanation": "Die Werte werden auf drei Variablen verteilt und anschließend addiert. Allan Quatermain verteilte einst drei Tempelschlüssel auf drei Abenteurer. Python macht dasselbe, nur ohne Krokodile."
+  }
+]

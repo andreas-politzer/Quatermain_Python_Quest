@@ -2,6 +2,8 @@ import tkinter as tk
 import customtkinter as ctk
 import random
 import sys
+import threading
+import time
 
 class QuatermainGUI:
     def __init__(self, root, engine):
@@ -17,6 +19,21 @@ class QuatermainGUI:
         self.arcade_font_text = ("Courier New", 14)
         self.arcade_font_btn = ("Courier New", 14, "bold")
         
+        # --- SOUND & FX KONTROLLE ---
+        self.fx_muted = False  # Zusätzlicher Schalter für die Effekte
+        self.music_thread = None
+        self.stop_music_event = threading.Event()
+        
+        # --- DYNAMIC THEME COLORS ---
+        self.type_colors = {
+            "output_prediction": "#FFFF00", # Gelb (Warnung/Code-Blitz)
+            "gap_fill": "#00FF00",          # Grün (Schlangen/Natur)
+            "error_detection": "#FF3333",   # Rot (Gefahr/Absturz)
+            "multiple_choice": "#00CCFF",   # Cyan (Klassisch)
+            "code_analysis": "#FFA500",     # Orange (Denkarbeit)
+            "boss": "#FFD700"               # Gold (Endgegner/Schatz ab Diff 5)
+        }
+        
         # Mapping der nostalgischen Arcade-Icons für die Question Types
         self.type_icons = {
             "output_prediction": "⚡ Output Prediction",
@@ -27,20 +44,68 @@ class QuatermainGUI:
         }
         
         self.player_name = "AND"
+        
+        # Starte die Titelmelodie direkt beim Laden
+        self.start_title_music()
         self.show_main_menu()
 
-    def play_sound(self, sound_type):
+    def start_title_music(self):
+        """Aktiviert den parallelen Hintergrund-Thread für das Title Theme."""
         if self.engine.sound_muted:
+            return
+        
+        if self.music_thread and self.music_thread.is_alive():
+            return
+            
+        self.stop_music_event.clear()
+        self.music_thread = threading.Thread(target=self._loop_title_music, daemon=True)
+        self.music_thread.start()
+
+    def _loop_title_music(self):
+        """Die native 8-Bit Titelmelodie-Schleife (läuft im Hintergrund-Thread)."""
+        if sys.platform != "win32":
+            return  # Musik-Loop exklusiv für Windows Beep-Hardware
+            
+        import winsound
+        # Eine typisch nervige, treibende Arcade-Bassline (Frequenz, Dauer in ms)
+        melody = [
+            (293, 150), (293, 150), (349, 200), (293, 150),
+            (261, 150), (261, 150), (329, 200), (261, 150),
+            (220, 150), (220, 150), (261, 200), (220, 150),
+            (293, 300), (329, 150), (349, 150), (392, 150)
+        ]
+        
+        while not self.stop_music_event.is_set():
+            for freq, duration in melody:
+                if self.stop_music_event.is_set():
+                    break
+                try:
+                    winsound.Beep(freq, duration)
+                except Exception:
+                    pass
+                time.sleep(0.05)  # Winzige Pause zwischen den Tönen
+
+    def stop_title_music(self):
+        """Stoppt die Hintergrundmusik sofort."""
+        self.stop_music_event.set()
+
+    def play_sound(self, sound_type):
+        """Erzeugt nervige Tröten und triumphale Fanfaren über die Hardware."""
+        if self.fx_muted:
             return
         try:
             if sys.platform == "win32":
                 import winsound
                 if sound_type == "correct":
-                    winsound.Beep(600, 100)
-                    winsound.Beep(900, 150)
+                    # Nervige, glückliche Aufwärts-Fanfare
+                    winsound.Beep(523, 80)   # C5
+                    winsound.Beep(659, 80)   # E5
+                    winsound.Beep(784, 80)   # G5
+                    winsound.Beep(1046, 250) # C6
                 elif sound_type == "wrong":
-                    winsound.Beep(300, 250)
-                    winsound.Beep(150, 300)
+                    # Total nervige Abwärts-Tröte (Möööp!)
+                    winsound.Beep(220, 300)  # Tiefes A
+                    winsound.Beep(147, 500)  # Extrem tiefes D
             else:
                 if sound_type == "correct":
                     print('\a')
@@ -67,7 +132,18 @@ class QuatermainGUI:
             self.show_main_menu()
 
     def toggle_sound(self):
+        """Schaltet das Title-Theme an/aus."""
         self.engine.sound_muted = not self.engine.sound_muted
+        if self.engine.sound_muted:
+            self.stop_title_music()
+        else:
+            self.start_title_music()
+        self.clear_screen()
+        self.show_main_menu()
+
+    def toggle_fx(self):
+        """Schaltet die Soundeffekte (Fanfare/Tröte) an/aus."""
+        self.fx_muted = not self.fx_muted
         self.clear_screen()
         self.show_main_menu()
 
@@ -101,12 +177,21 @@ class QuatermainGUI:
         )
         btn_lang.place(x=760, y=10)
         
+        # Musik Schalter
         sound_btn_text = "SOUND: ON" if not self.engine.sound_muted else "SOUND: OFF"
         btn_sound = ctk.CTkButton(
             self.root, text=sound_btn_text, font=("Courier New", 11),
             command=self.toggle_sound, width=100, fg_color="#222222", text_color="#FFFF00"
         )
         btn_sound.place(x=640, y=10)
+        
+        # NEU: FX Schalter
+        fx_btn_text = "FX: ON" if not self.fx_muted else "FX: OFF"
+        btn_fx = ctk.CTkButton(
+            self.root, text=fx_btn_text, font=("Courier New", 11),
+            command=self.toggle_fx, width=80, fg_color="#222222", text_color="#00CCFF"
+        )
+        btn_fx.place(x=540, y=10)
         
         # --- TITLE ---
         title_label = ctk.CTkLabel(self.root, text="QUATERMAIN'S PYTHON QUEST", font=self.arcade_font_title, text_color="#00FF00")
@@ -186,8 +271,10 @@ class QuatermainGUI:
         score_label = ctk.CTkLabel(status_frame, text=f"SCORE: {self.engine.score}", font=("Courier New", 14, "bold"), text_color="#00FF00")
         score_label.pack(side="right", padx=20)
         
-        # --- QUESTION SCREEN ---
-        q_frame = ctk.CTkFrame(self.root, fg_color="transparent")
+        # --- QUESTION SCREEN WITH DYNAMIC THEME COLOR ---
+        theme_color = self.get_theme_color(q_data)
+        
+        q_frame = ctk.CTkFrame(self.root, fg_color="transparent", border_width=2, border_color=theme_color)
         q_frame.pack(pady=30, padx=50, fill="both", expand=True)
         
         q_type = q_data.get("question_type", "multiple_choice")
@@ -196,11 +283,12 @@ class QuatermainGUI:
         difficulty = q_data.get("difficulty", 1)
         
         location_text = f"MODE: {icon_title} | CONCEPT: {concept_tag} | DIFF: {difficulty}/5"
-        section_label = ctk.CTkLabel(q_frame, text=location_text, font=("Courier New", 12, "italic"), text_color="#FFFF00")
-        section_label.pack(anchor="w", pady=5)
+        
+        section_label = ctk.CTkLabel(q_frame, text=location_text, font=("Courier New", 12, "italic"), text_color=theme_color)
+        section_label.pack(anchor="w", pady=5, padx=10)
         
         q_label = ctk.CTkLabel(q_frame, text=q_data["question"], font=("Courier New", 16, "bold"), justify="left", wraplength=750, text_color="#FFFFFF")
-        q_label.pack(pady=15, anchor="w")
+        q_label.pack(pady=15, anchor="w", padx=10)
         
         for option in q_data["options"]:
             btn = ctk.CTkButton(
@@ -209,7 +297,7 @@ class QuatermainGUI:
                 hover_color="#333333", text_color="#00FF00",
                 command=lambda opt=option: self.handle_answer_click(opt)
             )
-            btn.pack(pady=8, fill="x")
+            btn.pack(pady=8, fill="x", padx=10)
 
     def handle_answer_click(self, selected_opt):
         q_data = self.engine.get_current_question()
@@ -224,6 +312,8 @@ class QuatermainGUI:
 
     def show_feedback_screen(self, is_correct, q_data):
         self.clear_screen()
+        
+        theme_color = self.get_theme_color(q_data)
         
         # 1. Spezifischer Override aus der JSON abgreifen (Falls vorhanden)
         specific_feedback = q_data.get("correct_feedback" if is_correct else "incorrect_feedback")
@@ -275,7 +365,7 @@ class QuatermainGUI:
         quote_label = ctk.CTkLabel(self.root, text=zitat, font=("Courier New", 14, "italic"), text_color="#FFFF00", justify="center", wraplength=700)
         quote_label.pack(pady=10, padx=100)
         
-        box_frame = ctk.CTkFrame(self.root, fg_color="#111111", border_width=1, border_color=header_color)
+        box_frame = ctk.CTkFrame(self.root, fg_color="#111111", border_width=1, border_color=theme_color)
         box_frame.pack(pady=20, padx=80, fill="both", expand=True)
         
         expl_label = ctk.CTkLabel(box_frame, text=q_data["explanation"], font=self.arcade_font_text, text_color="#FFFFFF", justify="left", wraplength=650)
