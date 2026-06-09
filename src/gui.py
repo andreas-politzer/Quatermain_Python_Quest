@@ -49,6 +49,13 @@ class QuatermainGUI:
         self.start_title_music()
         self.show_main_menu()
 
+    def get_theme_color(self, q_data):
+        """Ermittelt die Farbe basierend auf Typ und Schwierigkeit (Diff 5 = Boss)."""
+        if q_data.get("difficulty", 1) >= 5:
+            return self.type_colors["boss"]
+        q_type = q_data.get("question_type", "multiple_choice")
+        return self.type_colors.get(q_type, "#00FF00")
+
     def start_title_music(self):
         """Aktiviert den parallelen Hintergrund-Thread für das Title Theme."""
         if self.engine.sound_muted:
@@ -62,12 +69,10 @@ class QuatermainGUI:
         self.music_thread.start()
 
     def _loop_title_music(self):
-        """Die native 8-Bit Titelmelodie-Schleife (läuft im Hintergrund-Thread)."""
-        if sys.platform != "win32":
-            return  # Musik-Loop exklusiv für Windows Beep-Hardware
-            
-        import winsound
-        # Eine typisch nervige, treibende Arcade-Bassline (Frequenz, Dauer in ms)
+        """Die native 8-Bit Titelmelodie-Schleife für Windows und Mac."""
+        import subprocess
+        
+        # Eine treibende Arcade-Bassline (Frequenz, Dauer in ms)
         melody = [
             (293, 150), (293, 150), (349, 200), (293, 150),
             (261, 150), (261, 150), (329, 200), (261, 150),
@@ -80,37 +85,43 @@ class QuatermainGUI:
                 if self.stop_music_event.is_set():
                     break
                 try:
-                    winsound.Beep(freq, duration)
+                    if sys.platform == "win32":
+                        import winsound
+                        winsound.Beep(freq, duration)
+                    else:
+                        # Mac-Alternative: AppleScript erzeugt den System-Takt im Hintergrund
+                        subprocess.run(["osascript", "-e", "beep"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                 except Exception:
                     pass
-                time.sleep(0.05)  # Winzige Pause zwischen den Tönen
+                time.sleep(duration / 1000.0)
 
     def stop_title_music(self):
         """Stoppt die Hintergrundmusik sofort."""
         self.stop_music_event.set()
 
     def play_sound(self, sound_type):
-        """Erzeugt nervige Tröten und triumphale Fanfaren über die Hardware."""
+        """Erzeugt Soundeffekte für Windows (Beeps) und Mac (Sprach-Synthese)."""
         if self.fx_muted:
             return
         try:
             if sys.platform == "win32":
                 import winsound
                 if sound_type == "correct":
-                    # Nervige, glückliche Aufwärts-Fanfare
                     winsound.Beep(523, 80)   # C5
                     winsound.Beep(659, 80)   # E5
                     winsound.Beep(784, 80)   # G5
                     winsound.Beep(1046, 250) # C6
                 elif sound_type == "wrong":
-                    # Total nervige Abwärts-Tröte (Möööp!)
                     winsound.Beep(220, 300)  # Tiefes A
                     winsound.Beep(147, 500)  # Extrem tiefes D
             else:
+                import subprocess
                 if sound_type == "correct":
-                    print('\a')
+                    # Mac macht ein fröhliches Arcade-"Boing"
+                    subprocess.Popen(["say", "-v", "Boing", "O K"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                 elif sound_type == "wrong":
-                    print('\a\a')
+                    # Mac trötet ein dramatisches "No" über Bad News
+                    subprocess.Popen(["say", "-v", "Bad_News", "No"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except Exception:
             pass
 
@@ -185,7 +196,7 @@ class QuatermainGUI:
         )
         btn_sound.place(x=640, y=10)
         
-        # NEU: FX Schalter
+        # FX Schalter
         fx_btn_text = "FX: ON" if not self.fx_muted else "FX: OFF"
         btn_fx = ctk.CTkButton(
             self.root, text=fx_btn_text, font=("Courier New", 11),
