@@ -26,7 +26,7 @@ class QuatermainGUI:
         self.fx_muted = False  
         self.music_thread = None
         self.stop_music_event = threading.Event()
-        self.current_playing_track = None  
+        self.current_playing_track = None  # Speichert, ob gerade "normal" oder "boss" läuft
         
         # --- DYNAMIC THEME COLORS ---
         self.type_colors = {
@@ -68,7 +68,6 @@ class QuatermainGUI:
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         graphics_dir = os.path.join(base_dir, "graphics")
         
-        # Fallback, falls der Ordner fehlt
         if not os.path.exists(graphics_dir):
             os.makedirs(graphics_dir)
             
@@ -82,7 +81,6 @@ class QuatermainGUI:
         for key, filename in files.items():
             path = os.path.join(graphics_dir, filename)
             if os.path.exists(path):
-                # Öffne das Bild und skaliere es exakt auf die Fenstergröße 900x650
                 pil_img = Image.open(path).resize((900, 650), Image.Resampling.LANCZOS)
                 self.bg_images[key] = ImageTk.PhotoImage(pil_img)
             else:
@@ -93,17 +91,15 @@ class QuatermainGUI:
         if self.bg_images.get(bg_key):
             bg_label = tk.Label(self.root, image=self.bg_images[bg_key])
             bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-            # Schicke das Label ganz nach hinten in der UI-Hierarchie
             bg_label.lower()
 
     def run_blink_loop(self):
-        """Ein unendlicher Loop für das klassische NES/C64 Start-Text-Blinken."""
+        """Ein unendlicher Loop für das klassische NES/C64 Start-Text-Blinken direkt auf der Grafik."""
         if self.sub_label and self.sub_label.winfo_exists():
             if self.blink_state:
-                self.sub_label.configure(text_color="#A0A0A0")
+                self.sub_label.configure(text_color="#FFFF00") # Knallgelber Arcade-Blitz
             else:
-                # Text unsichtbar machen durch Anpassung an den abgedunkelten Hintergrund
-                self.sub_label.configure(text_color="#111111")
+                self.sub_label.configure(text_color="#FF3333") # Wechselt auf Gefahren-Rot
             self.blink_state = not self.blink_state
         self.root.after(500, self.run_blink_loop)
 
@@ -132,7 +128,7 @@ class QuatermainGUI:
         self.music_thread.start()
 
     def _loop_music_thread(self, track_name):
-        """Spielt den ausgewählten Track in einer Endlosschleife ab (plattformunabhängig)."""
+        """Spielt den ausgewählten Track in einer Endlosschleife ab."""
         sound_path = self.get_audio_path(track_name)
         
         while not self.stop_music_event.is_set():
@@ -153,7 +149,7 @@ class QuatermainGUI:
             time.sleep(0.1)
 
     def stop_title_music(self):
-        """Signalisiert dem Musik-Thread, sofort zu stoppen und wartet auf das Ende."""
+        """Signalisiert dem Musik-Thread, sofort zu stoppen."""
         self.stop_music_event.set()
         self.current_playing_track = None
 
@@ -245,81 +241,78 @@ class QuatermainGUI:
         self.in_game = False
         self.clear_screen()
         
-        # Verankere das geladene Menü-Hintergrundbild
+        # Setze das geile vollflächige Kinoplakat-Hintergrundbild
         self.set_full_background("menu")
         self.start_music_loop("main-theme.mp3")
         
-        # --- TOP CONTROLS (Eingebettet in dunkle Buttons für Kontrast) ---
+        # --- TOP CONTROLS (Frei schwebend vor dem Bild, dünn umrandet) ---
         lang_btn_text = "SPRACHE: DE" if self.language == "de" else "LANGUAGE: EN"
         btn_lang = ctk.CTkButton(
-            self.root, text=lang_btn_text, font=("Courier New", 11), 
+            self.root, text=lang_btn_text, font=("Courier New", 11, "bold"), 
             command=self.toggle_language, width=120, fg_color="#0A0A0A", text_color="#00FF00", border_width=1, border_color="#00FF00"
         )
         btn_lang.place(x=760, y=10)
         
         sound_btn_text = "SOUND: ON" if not self.engine.sound_muted else "SOUND: OFF"
         btn_sound = ctk.CTkButton(
-            self.root, text=sound_btn_text, font=("Courier New", 11),
+            self.root, text=sound_btn_text, font=("Courier New", 11, "bold"),
             command=self.toggle_sound, width=100, fg_color="#0A0A0A", text_color="#FFFF00", border_width=1, border_color="#FFFF00"
         )
         btn_sound.place(x=640, y=10)
         
         fx_btn_text = "FX: ON" if not self.fx_muted else "FX: OFF"
         btn_fx = ctk.CTkButton(
-            self.root, text=fx_btn_text, font=("Courier New", 11),
+            self.root, text=fx_btn_text, font=("Courier New", 11, "bold"),
             command=self.toggle_fx, width=80, fg_color="#0A0A0A", text_color="#00CCFF", border_width=1, border_color="#00CCFF"
         )
         btn_fx.place(x=540, y=10)
         
-        # --- TITLE SYSTEM (Abgedunkelt durch ein zentriertes Text-Schutzschild) ---
-        title_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color="#00FF00")
-        title_frame.pack(pady=(40, 20), padx=80, fill="x")
-        
-        title_label = ctk.CTkLabel(title_frame, text="QUATERMAIN'S PYTHON QUEST", font=self.arcade_font_title, text_color="#00FF00")
-        title_label.pack(pady=15)
+        # --- TITEL SYSTEM DIREKT AUF DIE GRAFIK (Ohne verdeckende Box!) ---
+        title_label = ctk.CTkLabel(self.root, text="QUATERMAIN'S PYTHON QUEST", font=self.arcade_font_title, text_color="#00FF00", fg_color="transparent")
+        title_label.place(x=50, y=60, relwidth=0.88)
         
         subtitle_text = "--- Drücke Start, um das PCEP-Exam zu stürmen ---" if self.language == "de" else "--- Press Start to conquer the PCEP Exam ---"
-        self.sub_label = ctk.CTkLabel(title_frame, text=subtitle_text, font=self.arcade_font_text, text_color="#A0A0A0")
-        self.sub_label.pack(pady=(0, 10))
+        self.sub_label = ctk.CTkLabel(self.root, text=subtitle_text, font=self.arcade_font_text, text_color="#A0A0A0", fg_color="transparent")
+        self.sub_label.place(x=50, y=200, relwidth=0.88)
         
-        # --- PLAYER INPUT ---
-        input_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color="#00FF00")
-        input_frame.pack(pady=20, padx=150, fill="x")
+        # --- PLAYER INPUT (FIX 1: Groesse fest im Konstruktor) ---
+        input_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color="#00FF00", width=500, height=95)
+        input_frame.place(x=200, y=320)
         
         name_label_text = "TIPPE DEIN SPIELER-KÜRZEL (3 ZEICHEN):" if self.language == "de" else "ENTER YOUR INITIALS (3 CHARACTERS):"
         name_label = ctk.CTkLabel(input_frame, text=name_label_text, font=self.arcade_font_text, text_color="#FFFFFF")
-        name_label.pack(pady=10)
+        name_label.pack(pady=(8, 2))
         
-        self.name_entry = ctk.CTkEntry(input_frame, width=120, font=("Courier New", 22, "bold"), justify="center", text_color="#00FF00", fg_color="#000000")
+        self.name_entry = ctk.CTkEntry(input_frame, width=120, font=("Courier New", 22, "bold"), justify="center", text_color="#00FF00", fg_color="#000000", border_color="#00FF00")
         self.name_entry.insert(0, self.player_name)
-        self.name_entry.pack(pady=10)
+        self.name_entry.pack(pady=(0, 8))
         
-        # --- DYNAMISCHE MODUL-AUSWAHL ---
-        dropdown_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=1, border_color="#444444")
-        dropdown_frame.pack(pady=10, padx=200, fill="x")
+        # --- DYNAMISCHE MODUL-AUSWAHL (FIX 2: Groesse fest im Konstruktor) ---
+        dropdown_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=1, border_color="#444444", width=500, height=85)
+        dropdown_frame.place(x=200, y=435)
         
         raw_modules = self.engine.get_available_modules()
         dropdown_label_text = "WÄHLE DEINE EBENE:" if self.language == "de" else "CHOOSE YOUR LEVEL:"
         dropdown_label = ctk.CTkLabel(dropdown_frame, text=dropdown_label_text, font=self.arcade_font_text, text_color="#FFFFFF")
-        dropdown_label.pack(pady=5)
+        dropdown_label.pack(pady=(5, 2))
         
         mixed_text = "Alle Ebenen gemischt" if self.language == "de" else "All Levels mixed"
         options_list = [mixed_text] + [self.format_module_display(m) for m in raw_modules]
         
         self.module_dropdown = ctk.CTkOptionMenu(
             dropdown_frame, values=options_list, font=self.arcade_font_text, dropdown_font=self.arcade_font_text,
-            fg_color="#1E1E1E", button_color="#00FF00", button_hover_color="#00CC00"
+            fg_color="#1E1E1E", button_color="#00FF00", button_hover_color="#00CC00", width=450
         )
-        self.module_dropdown.pack(pady=10)
+        self.module_dropdown.pack(pady=(0, 10))
         
         # --- START BUTTON ---
         btn_start_text = "QUEST STARTEN" if self.language == "de" else "START QUEST"
         btn_start = ctk.CTkButton(
             self.root, text=btn_start_text, font=self.arcade_font_btn, 
             fg_color="#00FF00", text_color="#000000", hover_color="#00CC00",
-            height=50, width=280, command=self.press_start
+            height=45, width=280, command=self.press_start
         )
-        btn_start.pack(pady=25)
+        btn_start.place(x=310, y=545)
 
     def press_start(self):
         self.player_name = self.name_entry.get().strip().upper()[:3]
@@ -343,23 +336,23 @@ class QuatermainGUI:
             self.show_game_over_screen()
             return
             
-        # --- FLIEGENDER WECHSEL DER HINTERGRÜNDE UND MUSIK ---
+        # Dynamische Bild- & Musik-Wahl
         if q_data.get("difficulty", 1) >= 5:
-            self.set_full_background("temple")  # Die goldene Lava-Kammer!
+            self.set_full_background("temple")
             self.start_music_loop("boss-theme.mp3")
         else:
-            self.set_full_background("jungle")  # Der lauernde Pixel-Dschungel!
+            self.set_full_background("jungle")
             self.start_music_loop("main-theme.mp3")
             
         # --- STATUS BAR ---
-        status_frame = ctk.CTkFrame(self.root, height=40, fg_color="#0A0A0A", border_width=1, border_color="#333333")
+        status_frame = ctk.CTkFrame(self.root, height=35, fg_color="#0A0A0A", border_width=1, border_color="#333333")
         status_frame.pack(fill="x", side="top")
         
         quit_btn_text = "❌ MENÜ" if self.language == "de" else "❌ QUIT"
         btn_quit = ctk.CTkButton(
             status_frame, text=quit_btn_text, font=("Courier New", 12, "bold"),
             fg_color="#331111", hover_color="#551111", text_color="#FF3333",
-            width=70, height=26, command=self.show_main_menu
+            width=70, height=24, command=self.show_main_menu
         )
         btn_quit.pack(side="left", padx=10)
         
@@ -373,22 +366,23 @@ class QuatermainGUI:
         score_label = ctk.CTkLabel(status_frame, text=f"SCORE: {self.engine.score}", font=("Courier New", 14, "bold"), text_color="#00FF00")
         score_label.pack(side="right", padx=20)
         
-        # --- QUESTION SCREEN WITH SEMI-TRANSPARENT TEXT PROTECTION ---
+        # --- THE RETRO SPLITSCREEN (FIX 3: Groesse fest im Konstruktor) ---
         theme_color = self.get_theme_color(q_data)
-        
-        # fg_color="#0A0A0A" schwächt das unruhige Bild im Textbereich ab!
-        q_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color=theme_color)
-        q_frame.pack(pady=30, padx=50, fill="both", expand=True)
+        q_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color=theme_color, width=800, height=420)
+        q_frame.place(x=50, y=200)
         
         q_type = q_data.get("question_type", "multiple_choice")
         icon_title = self.type_icons.get(q_type, "🗿 Challenge")
-        location_text = f"MODE: {icon_title} | CONCEPT: {q_data.get('concept', 'general')} | DIFF: {q_data.get('difficulty', 1)}/5"
+        concept_tag = q_data.get("concept", "general")
+        difficulty = q_data.get("difficulty", 1)
+        
+        location_text = f"MODE: {icon_title} | CONCEPT: {concept_tag} | DIFF: {difficulty}/5"
         
         section_label = ctk.CTkLabel(q_frame, text=location_text, font=("Courier New", 12, "italic"), text_color=theme_color)
-        section_label.pack(anchor="w", pady=5, padx=15)
+        section_label.pack(anchor="w", pady=(10, 2), padx=15)
         
-        q_label = ctk.CTkLabel(q_frame, text=q_data["question"], font=("Courier New", 16, "bold"), justify="left", wraplength=730, text_color="#FFFFFF")
-        q_label.pack(pady=15, anchor="w", padx=15)
+        q_label = ctk.CTkLabel(q_frame, text=q_data["question"], font=("Courier New", 16, "bold"), justify="left", wraplength=760, text_color="#FFFFFF")
+        q_label.pack(pady=10, anchor="w", padx=15)
         
         for option in q_data["options"]:
             btn = ctk.CTkButton(
@@ -413,7 +407,6 @@ class QuatermainGUI:
     def show_feedback_screen(self, is_correct, q_data):
         self.clear_screen()
         
-        # Passenden Hintergrund für das Feedback beibehalten
         if q_data.get("difficulty", 1) >= 5:
             self.set_full_background("temple")
         else:
@@ -426,30 +419,56 @@ class QuatermainGUI:
             zitat = specific_feedback
         else:
             if self.language == "de":
-                quotes_correct = ["Du hast weise gewählt.", "Die Python-Priester nicken anerkennend.", "Allan steckt die Machete wieder ein.", "Der Schatzraum öffnet sich."]
-                quotes_wrong = ["Autsch. Die Falltür war echt.", "Die Krokodile applaudieren.", "Allan hat schon bessere Entscheidungen gesehen.", "Der Tempel fordert seinen Tribut."]
+                quotes_correct = [
+                    "Du hast weise gewählt.",
+                    "Die Python-Priester nicken anerkennend.",
+                    "Allan steckt die Machete wieder ein.",
+                    "Der Schatzraum öffnet sich."
+                ]
+                quotes_wrong = [
+                    "Autsch. Die Falltür war echt.",
+                    "Die Krokodile applaudieren.",
+                    "Allan hat schon bessere Entscheidungen gesehen.",
+                    "Der Tempel fordert seinen Tribut."
+                ]
             else:
-                quotes_correct = ['"You have chosen wisely."', '"May the Force be with you."', '"Nice shot, Maverick."', '"You can be my wingman anytime."', '"If you build it, he will come."', "The treasure chamber opens.", "The Python priests approve."]
-                quotes_wrong = ['"Game over, man. Game over!"', '"Wrong, but you\'ll be back!"', '"That\'s not a knife... THIS is a bug."', '"Inconceivable!"', '"Nobody puts Baby in a corner. Except this answer."', "The crocodiles are laughing.", "The temple claims another victim."]
+                quotes_correct = [
+                    '"You have chosen wisely."',
+                    '"May the Force be with you."',
+                    '"Nice shot, Maverick."',
+                    '"You can be my wingman anytime."',
+                    '"If you build it, he will come."',
+                    "The treasure chamber opens.",
+                    "The Python priests approve."
+                ]
+                quotes_wrong = [
+                    '"Game over, man. Game over!"',
+                    '"Wrong, but you\'ll be back!"',
+                    '"That\'s not a knife... THIS is a bug."',
+                    '"Inconceivable!"',
+                    '"Nobody puts Baby in a corner. Except this answer."',
+                    "The crocodiles are laughing.",
+                    "The temple claims another victim."
+                ]
             zitat = random.choice(quotes_correct if is_correct else quotes_wrong)
         
         header_text = "CORRECT" if is_correct else ("FALSCH" if self.language == "de" else "WRONG")
         header_color = "#00FF00" if is_correct else "#FF3333"
             
-        # Text-Zonen auf dunklem Hintergrund-Kasten rendern
-        top_feedback_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=1, border_color=header_color, height=120)
-        top_feedback_frame.pack(pady=(30, 10), padx=80, fill="x")
+        # --- FEEDBACK SCREEN (FIX 4 & FIX 5: Groesse fest im Konstruktor) ---
+        top_feedback_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=1, border_color=header_color, width=800, height=100)
+        top_feedback_frame.place(x=50, y=200)
         
         header_label = ctk.CTkLabel(top_feedback_frame, text=header_text, font=("Courier New", 24, "bold"), text_color=header_color)
-        header_label.pack(pady=(15, 5))
+        header_label.pack(pady=(12, 2))
         
-        quote_label = ctk.CTkLabel(top_feedback_frame, text=zitat, font=("Courier New", 14, "italic"), text_color="#FFFF00", justify="center", wraplength=650)
-        quote_label.pack(pady=(0, 15), padx=20)
+        quote_label = ctk.CTkLabel(top_feedback_frame, text=zitat, font=("Courier New", 14, "italic"), text_color="#FFFF00", justify="center", wraplength=750)
+        quote_label.pack(pady=(0, 12), padx=20)
         
-        box_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=1, border_color=theme_color)
-        box_frame.pack(pady=10, padx=80, fill="both", expand=True)
+        box_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=1, border_color=theme_color, width=800, height=240)
+        box_frame.place(x=50, y=315)
         
-        expl_label = ctk.CTkLabel(box_frame, text=q_data["explanation"], font=self.arcade_font_text, text_color="#FFFFFF", justify="left", wraplength=650)
+        expl_label = ctk.CTkLabel(box_frame, text=q_data["explanation"], font=self.arcade_font_text, text_color="#FFFFFF", justify="left", wraplength=750)
         expl_label.pack(pady=20, padx=20)
         
         btn_next = ctk.CTkButton(
@@ -457,7 +476,7 @@ class QuatermainGUI:
             fg_color="#00FF00", text_color="#000000", hover_color="#00CC00",
             width=200, height=45, command=self.render_question
         )
-        btn_next.pack(pady=20)
+        btn_next.place(x=350, y=570)
 
     def show_game_over_screen(self):
         self.clear_screen()
@@ -475,14 +494,15 @@ class QuatermainGUI:
             end_text = "GAME OVER\n\nDer Tempel stürzt über Quatermain zusammen..." if self.language == "de" else "GAME OVER\n\nThe temple collapses over Quatermain..."
             end_color = "#FF3333"
             
-        end_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color=end_color)
-        end_frame.pack(pady=(30, 10), padx=100, fill="x")
+        # --- GAME OVER / HIGHSCORE SCREEN (FIX 6 & FIX 7: Groesse fest im Konstruktor) ---
+        end_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color=end_color, width=700, height=100)
+        end_frame.place(x=100, y=140)
         
         end_label = ctk.CTkLabel(end_frame, text=end_text, font=self.arcade_font_title, text_color=end_color, justify="center")
         end_label.pack(pady=20)
         
-        leaderboard_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color="#FFFF00")
-        leaderboard_frame.pack(pady=10, padx=150, fill="both", expand=True)
+        leaderboard_frame = ctk.CTkFrame(self.root, fg_color="#0A0A0A", border_width=2, border_color="#FFFF00", width=600, height=290)
+        leaderboard_frame.place(x=150, y=260)
         
         board_title = "TOP 10 TEMPELSTÜRMER" if self.language == "de" else "TOP 10 TEMPLE RUNNERS"
         board_label = ctk.CTkLabel(leaderboard_frame, text=board_title, font=("Courier New", 16, "bold"), text_color="#FFFF00")
@@ -503,4 +523,4 @@ class QuatermainGUI:
             score_line.pack(pady=2, anchor="w", padx=100)
             
         btn_menu = ctk.CTkButton(self.root, text="MAIN MENU" if self.language == "en" else "HAUPTMENÜ", font=self.arcade_font_btn, command=self.show_main_menu)
-        btn_menu.pack(pady=20)
+        btn_menu.place(x=360, y=575)
