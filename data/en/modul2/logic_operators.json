@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_LOG_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "comparison_operators",
+    "question": "What will be printed?\n\nprint(5 > 3)",
+    "options": [
+      "True",
+      "False",
+      "5",
+      "3"
+    ],
+    "correct": "True",
+    "explanation": "5 is greater than 3, so the comparison evaluates to True. *DING!* Allan checks whether the giant stone idol is taller than he is. Fortunately, this comparison is much easier than escaping from it."
+  },
+  {
+    "id": "M2_LOG_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "comparison_operators",
+    "question": "What will be printed?\n\nprint(5 == 3)",
+    "options": [
+      "True",
+      "False",
+      "5 == 3",
+      "Error"
+    ],
+    "correct": "False",
+    "explanation": "The values are not equal, so the comparison evaluates to False. Allan found two ancient rubies and hoped they were identical. *BEEP.* They weren't."
+  },
+  {
+    "id": "M2_LOG_003",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "comparison_operators",
+    "question": "Which operator checks for equality?",
+    "options": [
+      "=",
+      "==",
+      "!=",
+      ">="
+    ],
+    "correct": "==",
+    "explanation": "The == operator compares two values for equality. The = operator assigns a value. As Allan likes to say: one equals sign writes history, two equals signs investigate it."
+  },
+  {
+    "id": "M2_LOG_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nprint(True and False)",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correct": "False",
+    "explanation": "With and, both operands must be True. Since one operand is False, the result is False. Allan found two temple keys but only one fit the lock. *CLUNK.* No treasure today."
+  },
+  {
+    "id": "M2_LOG_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nprint(True or False)",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correct": "True",
+    "explanation": "With or, only one operand needs to be True. Since the first value is True, the result is True. Allan remembers what Egon Spengler might have said: when at least one plan works, you don't have to cross the streams. *WHOOSH.*"
+  },
+  {
+    "id": "M2_LOG_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nprint(not True)",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correct": "False",
+    "explanation": "The not operator reverses a truth value. Therefore, not True becomes False. Allan discovers a stone tablet labeled TRUE, flips it over, and finds FALSE engraved on the back. *CLICK.*"
+  },
+  {
+    "id": "M2_LOG_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nx = 5\nprint(x > 3 and x < 10)",
+    "options": [
+      "True",
+      "False",
+      "5",
+      "10"
+    ],
+    "correct": "True",
+    "explanation": "Both conditions are satisfied. Therefore, the entire expression evaluates to True. Allan Quatermain has successfully passed both temple trials. *DING!* *DING!* Somewhere in the distance, an 8-bit fanfare begins playing while a treasure chest slowly opens."
+  },
+  {
+    "id": "M2_LOG_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nx = 5\nprint(x < 3 or x > 4)",
+    "options": [
+      "True",
+      "False",
+      "5",
+      "Error"
+    ],
+    "correct": "True",
+    "explanation": "The first condition is False, but the second condition is True. With or, a single True value is enough. Allan's first escape route is blocked, but the second tunnel leads straight to freedom. Very Goonies. *BWAAAP.*"
+  },
+  {
+    "id": "M2_LOG_009",
+    "difficulty": 5,
+    "question_type": "output_prediction",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nprint(not False and True)",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correct": "True",
+    "explanation": "First, not False evaluates to True. Then True and True also evaluates to True. As Allan learned deep inside the temple, not every trap is as dangerous as it first appears. Sometimes the scary-looking hallway is actually the correct path. *BEEP. BOOP.*"
+  },
+  {
+    "id": "M2_LOG_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "logical_operators",
+    "question": "What will be printed?\n\nprint(not (5 > 3 and 2 < 4))",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correct": "False",
+    "explanation": "The expression inside the parentheses evaluates to True and True, which results in True. After that, not True becomes False. This is a classic PCEP trap. Allan nearly opened the wrong temple door after hearing a mysterious voice whisper, 'Choose wisely.' Unfortunately, it sounded suspiciously like Yoda speaking through a malfunctioning arcade speaker. *KRRRZZT.*"
+  }
+]
