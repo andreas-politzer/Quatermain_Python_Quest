@@ -190,7 +190,6 @@ class QuatermainGUI:
         q_frame = ctk.CTkFrame(self.root, fg_color="transparent")
         q_frame.pack(pady=30, padx=50, fill="both", expand=True)
         
-        # Auslesen der Metadaten für das Arcade-HUD
         q_type = q_data.get("question_type", "multiple_choice")
         icon_title = self.type_icons.get(q_type, "🗿 Challenge")
         concept_tag = q_data.get("concept", "general")
@@ -226,31 +225,54 @@ class QuatermainGUI:
     def show_feedback_screen(self, is_correct, q_data):
         self.clear_screen()
         
-        quotes_correct = [
-            '"This is the beginning of a wonderful friendship."',
-            '"Yippie-ya-yay, Schweinebacke!"',
-            '"Uns bleibt immer noch Paris."',
-            "Glückwunsch! Die Schlange zieht sich friedlich zurück.",
-            "Ein herrlicher Treffer! Quatermain klopft dir auf die Schulter."
-        ]
+        # 1. Spezifischer Override aus der JSON abgreifen (Falls vorhanden)
+        specific_feedback = q_data.get("correct_feedback" if is_correct else "incorrect_feedback")
         
-        quotes_wrong = [
-            '"Wrong, but you\'ll be back!"',
-            '"I\'m getting too old for this crap."',
-            '"Now you steam!"',
-            '"Play it again, Sam."',
-            "Aua! Eine fiese Syntax-Falle schnappt zu!",
-            "Verdammt! Ein Krokodil schnappt nach deinen Stiefeln."
-        ]
+        # 2. Falls kein Spezial-Feedback in JSON hinterlegt ist -> Nutze die getrennten Sprachpools
+        if specific_feedback:
+            zitat = specific_feedback
+        else:
+            if self.language == "de":
+                quotes_correct = [
+                    "Du hast weise gewählt.",
+                    "Die Python-Priester nicken anerkennend.",
+                    "Allan steckt die Machete wieder ein.",
+                    "Der Schatzraum öffnet sich."
+                ]
+                quotes_wrong = [
+                    "Autsch. Die Falltür war echt.",
+                    "Die Krokodile applaudieren.",
+                    "Allan hat schon bessere Entscheidungen gesehen.",
+                    "Der Tempel fordert seinen Tribut."
+                ]
+            else:
+                quotes_correct = [
+                    '"You have chosen wisely."',
+                    '"May the Force be with you."',
+                    '"Nice shot, Maverick."',
+                    '"You can be my wingman anytime."',
+                    '"If you build it, he will come."',
+                    "The treasure chamber opens.",
+                    "The Python priests approve."
+                ]
+                quotes_wrong = [
+                    '"Game over, man. Game over!"',
+                    '"Wrong, but you\'ll be back!"',
+                    '"That\'s not a knife... THIS is a bug."',
+                    '"Inconceivable!"',
+                    '"Nobody puts Baby in a corner. Except this answer."',
+                    "The crocodiles are laughing.",
+                    "The temple claims another victim."
+                ]
+            zitat = random.choice(quotes_correct if is_correct else quotes_wrong)
         
-        zitat = random.choice(quotes_correct if is_correct else quotes_wrong)
         header_text = "CORRECT" if is_correct else ("FALSCH" if self.language == "de" else "WRONG")
         header_color = "#00FF00" if is_correct else "#FF3333"
             
         header_label = ctk.CTkLabel(self.root, text=header_text, font=("Courier New", 24, "bold"), text_color=header_color)
         header_label.pack(pady=40)
         
-        quote_label = ctk.CTkLabel(self.root, text=zitat, font=("Courier New", 14, "italic"), text_color="#FFFF00")
+        quote_label = ctk.CTkLabel(self.root, text=zitat, font=("Courier New", 14, "italic"), text_color="#FFFF00", justify="center", wraplength=700)
         quote_label.pack(pady=10, padx=100)
         
         box_frame = ctk.CTkFrame(self.root, fg_color="#111111", border_width=1, border_color=header_color)
