@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M1_LIT_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "numeric_literals",
+    "question": "Which data type does the literal 10 have?",
+    "options": [
+      "int",
+      "float",
+      "str",
+      "bool"
+    ],
+    "correct": "int",
+    "explanation": "10 is an integer literal."
+  },
+  {
+    "id": "M1_LIT_002",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "numeric_literals",
+    "question": "Which data type does the literal 10.0 have?",
+    "options": [
+      "int",
+      "float",
+      "str",
+      "bool"
+    ],
+    "correct": "float",
+    "explanation": "10.0 is a float literal."
+  },
+  {
+    "id": "M1_LIT_003",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "string_literals",
+    "question": "Which data type does the literal \"10\" have?",
+    "options": [
+      "int",
+      "float",
+      "str",
+      "bool"
+    ],
+    "correct": "str",
+    "explanation": "Quotation marks create a string."
+  },
+  {
+    "id": "M1_LIT_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "boolean_values",
+    "question": "What will be printed?\n\nprint(True)",
+    "options": [
+      "true",
+      "TRUE",
+      "1",
+      "True"
+    ],
+    "correct": "True",
+    "explanation": "Python prints Boolean values with an uppercase first letter."
+  },
+  {
+    "id": "M1_LIT_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "numeric_literals",
+    "question": "What will be printed?\n\nprint(0b1010)",
+    "options": [
+      "1010",
+      "10",
+      "8",
+      "Error"
+    ],
+    "correct": "10",
+    "explanation": "0b indicates a binary literal."
+  },
+  {
+    "id": "M1_LIT_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "numeric_literals",
+    "question": "What will be printed?\n\nprint(0o12)",
+    "options": [
+      "12",
+      "10",
+      "8",
+      "Error"
+    ],
+    "correct": "10",
+    "explanation": "0o indicates an octal literal."
+  },
+  {
+    "id": "M1_LIT_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "numeric_literals",
+    "question": "What will be printed?\n\nprint(0xA)",
+    "options": [
+      "A",
+      "16",
+      "10",
+      "Error"
+    ],
+    "correct": "10",
+    "explanation": "0x indicates a hexadecimal literal."
+  },
+  {
+    "id": "M1_LIT_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "boolean_values",
+    "question": "What happens?\n\nprint(true)",
+    "options": [
+      "True is printed",
+      "TypeError",
+      "NameError",
+      "ValueError"
+    ],
+    "correct": "NameError",
+    "explanation": "Python recognizes True and False, not true and false."
+  },
+  {
+    "id": "M1_LIT_009",
+    "difficulty": 5,
+    "question_type": "output_prediction",
+    "concept": "numeric_literals",
+    "question": "What will be printed?\n\nprint(1_000_000)",
+    "options": [
+      "1_000_000",
+      "1000000",
+      "1000",
+      "Error"
+    ],
+    "correct": "1000000",
+    "explanation": "Underscores are only used to improve the readability of numbers."
+  },
+  {
+    "id": "M1_LIT_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "boolean_values",
+    "question": "What will be printed?\n\nprint(True + True)",
+    "options": [
+      "True",
+      "2",
+      "1",
+      "Error"
+    ],
+    "correct": "2",
+    "explanation": "True behaves numerically like 1."
+  }
+]

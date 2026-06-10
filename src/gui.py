@@ -24,6 +24,7 @@ class QuatermainGUI:
         self.root.title("Quatermain's Python Quest - PCEP Arcade")
         self.root.geometry("900x650")
         self.root.resizable(False, False)
+        self.root.protocol("WM_DELETE_WINDOW", self._on_close)
         
         self.arcade_font_title = ("Courier New", 26, "bold")
         self.arcade_font_text = ("Courier New", 14)
@@ -34,6 +35,7 @@ class QuatermainGUI:
         self.music_thread = None
         self.stop_music_event = threading.Event()
         self.current_playing_track = None  # Speichert, ob gerade "normal" oder "boss" läuft
+        self.current_proc = None
         
         # --- DYNAMIC THEME COLORS ---
         self.type_colors = {
@@ -145,18 +147,19 @@ class QuatermainGUI:
                 try: winsound.PlaySound(sound_path, winsound.SND_FILENAME)
                 except Exception: time.sleep(1)
             else:
-                proc = subprocess.Popen(["afplay", sound_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                while proc.poll() is None:
+                self.current_proc = subprocess.Popen(["afplay", sound_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                while self.current_proc.poll() is None:
                     if self.stop_music_event.is_set():
-                        proc.terminate()
+                        self.current_proc.terminate()
                         break
                     time.sleep(0.2)
             time.sleep(0.1)
 
     def stop_title_music(self):
-        """Signalisiert dem Musik-Thread, sofort zu stoppen."""
         self.stop_music_event.set()
         self.current_playing_track = None
+        if self.current_proc and self.current_proc.poll() is None:
+            self.current_proc.terminate()
 
     def play_sound(self, sound_type):
         """Feuert einmalige Soundeffekte ab, ohne das UI zu blockieren."""
@@ -529,3 +532,7 @@ class QuatermainGUI:
             
         btn_menu = ctk.CTkButton(self.root, text="MAIN MENU" if self.language == "en" else "HAUPTMENÜ", font=self.arcade_font_btn, command=self.show_main_menu)
         btn_menu.place(x=360, y=575)
+
+    def _on_close(self):
+        self.stop_title_music()
+        self.root.destroy()

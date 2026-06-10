@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M4_FNC_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "functions",
+    "question": "Mit welchem Schlüsselwort wird eine Funktion definiert?",
+    "options": [
+      "func",
+      "function",
+      "def",
+      "define"
+    ],
+    "correct": "def",
+    "explanation": "Funktionen werden in Python mit dem Schlüsselwort def definiert."
+  },
+  {
+    "id": "M4_FNC_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef greet():\n    print(\"Hello\")\n\ngreet()",
+    "options": [
+      "Hello",
+      "greet",
+      "None",
+      "Error"
+    ],
+    "correct": "Hello",
+    "explanation": "Die Funktion wird aufgerufen und gibt den String aus."
+  },
+  {
+    "id": "M4_FNC_003",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "functions",
+    "question": "Wie wird eine Funktion aufgerufen?",
+    "options": [
+      "greet",
+      "greet[]",
+      "greet()",
+      "call greet"
+    ],
+    "correct": "greet()",
+    "explanation": "Die Klammern führen den Funktionsaufruf aus."
+  },
+  {
+    "id": "M4_FNC_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef greet():\n    print(\"Python\")\n\nprint(\"Start\")\ngreet()",
+    "options": [
+      "Python",
+      "Start",
+      "Start Python",
+      "Error"
+    ],
+    "correct": "Start Python",
+    "explanation": "Zuerst wird Start ausgegeben, anschließend der Funktionsinhalt."
+  },
+  {
+    "id": "M4_FNC_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef show():\n    print(\"A\")\n\nshow()\nshow()",
+    "options": [
+      "A",
+      "AA",
+      "A A",
+      "Error"
+    ],
+    "correct": "A A",
+    "explanation": "Die Funktion wird zweimal ausgeführt."
+  },
+  {
+    "id": "M4_FNC_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "functions",
+    "question": "Welche Exception tritt auf?\n\nhello()",
+    "options": [
+      "TypeError",
+      "NameError",
+      "ValueError",
+      "IndexError"
+    ],
+    "correct": "NameError",
+    "explanation": "Die Funktion wurde nie definiert."
+  },
+  {
+    "id": "M4_FNC_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef greet():\n    print(\"A\")\n\ngreet()\nprint(\"B\")",
+    "options": [
+      "A B",
+      "B A",
+      "AB",
+      "BA"
+    ],
+    "correct": "A B",
+    "explanation": "Der Funktionsaufruf wird zuerst ausgeführt, danach print(\"B\")."
+  },
+  {
+    "id": "M4_FNC_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef test():\n    print(\"Temple\")\n\nfor i in range(2):\n    test()",
+    "options": [
+      "Temple",
+      "Temple Temple",
+      "2",
+      "Error"
+    ],
+    "correct": "Temple Temple",
+    "explanation": "Die Funktion wird in jeder Schleifeniteration aufgerufen."
+  },
+  {
+    "id": "M4_FNC_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef a():\n    print(\"A\")\n\ndef b():\n    print(\"B\")\n\na()\nb()",
+    "options": [
+      "A B",
+      "B A",
+      "AB",
+      "BA"
+    ],
+    "correct": "A B",
+    "explanation": "Die Funktionen werden in der Reihenfolge ihrer Aufrufe ausgeführt."
+  },
+  {
+    "id": "M4_FNC_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "Was wird ausgegeben?\n\ndef snake():\n    print(\"Python\")\n\nsnake()\nsnake()\nsnake()",
+    "options": [
+      "Python",
+      "Python Python",
+      "Python Python Python",
+      "Error"
+    ],
+    "correct": "Python Python Python",
+    "explanation": "Jeder Funktionsaufruf führt den Funktionskörper erneut aus. Allan Quatermain hätte spätestens nach dem dritten Python-Schlangenpriester das Weite gesucht."
+  }
+]

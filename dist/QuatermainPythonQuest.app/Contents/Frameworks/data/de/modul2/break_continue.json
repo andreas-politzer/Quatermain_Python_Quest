@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_BRK_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "break_statement",
+    "question": "Welche Anweisung beendet eine Schleife sofort?",
+    "options": [
+      "continue",
+      "break",
+      "stop",
+      "exit"
+    ],
+    "correct": "break",
+    "explanation": "break beendet die aktuell laufende Schleife unmittelbar."
+  },
+  {
+    "id": "M2_BRK_002",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "continue_statement",
+    "question": "Welche Anweisung überspringt den Rest des aktuellen Schleifendurchlaufs?",
+    "options": [
+      "break",
+      "continue",
+      "skip",
+      "next"
+    ],
+    "correct": "continue",
+    "explanation": "continue springt direkt zum nächsten Schleifendurchlauf."
+  },
+  {
+    "id": "M2_BRK_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "break_statement",
+    "question": "Was wird ausgegeben?\n\nfor i in range(5):\n    if i == 3:\n        break\n    print(i)",
+    "options": [
+      "0 1 2",
+      "0 1 2 3",
+      "3",
+      "0 1 2 3 4"
+    ],
+    "correct": "0 1 2",
+    "explanation": "Sobald i den Wert 3 erreicht, beendet break die Schleife."
+  },
+  {
+    "id": "M2_BRK_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "continue_statement",
+    "question": "Was wird ausgegeben?\n\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)",
+    "options": [
+      "0 1 3 4",
+      "0 1 2 3 4",
+      "2",
+      "0 1"
+    ],
+    "correct": "0 1 3 4",
+    "explanation": "Der Wert 2 wird übersprungen, alle anderen werden ausgegeben."
+  },
+  {
+    "id": "M2_BRK_005",
+    "difficulty": 3,
+    "question_type": "code_analysis",
+    "concept": "break_statement",
+    "question": "Was wird ausgegeben?\n\nx = 0\nwhile True:\n    x += 1\n    if x == 4:\n        break\nprint(x)",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "Endlosschleife"
+    ],
+    "correct": "4",
+    "explanation": "Die Schleife läuft bis x den Wert 4 erreicht. Dann beendet break die Schleife."
+  },
+  {
+    "id": "M2_BRK_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "continue_statement",
+    "question": "Was wird ausgegeben?\n\nfor i in range(1, 6):\n    if i % 2 == 0:\n        continue\n    print(i)",
+    "options": [
+      "1 3 5",
+      "2 4",
+      "1 2 3 4 5",
+      "0 1 3 5"
+    ],
+    "correct": "1 3 5",
+    "explanation": "Alle geraden Zahlen werden übersprungen."
+  },
+  {
+    "id": "M2_BRK_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "break_statement",
+    "question": "Was wird ausgegeben?\n\nfor i in range(3):\n    print(i)\n    break",
+    "options": [
+      "0",
+      "0 1",
+      "0 1 2",
+      "Nichts"
+    ],
+    "correct": "0",
+    "explanation": "Nach dem ersten Durchlauf beendet break die Schleife sofort."
+  },
+  {
+    "id": "M2_BRK_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "continue_statement",
+    "question": "Was wird ausgegeben?\n\nx = 0\nfor i in range(5):\n    if i == 2:\n        continue\n    x += i\nprint(x)",
+    "options": [
+      "8",
+      "10",
+      "6",
+      "4"
+    ],
+    "correct": "8",
+    "explanation": "Es werden 0 + 1 + 3 + 4 addiert. Der Wert 2 wird übersprungen."
+  },
+  {
+    "id": "M2_BRK_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "break_statement",
+    "question": "Was wird ausgegeben?\n\ncount = 0\nfor i in range(10):\n    count += 1\n    if i == 4:\n        break\nprint(count)",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "10"
+    ],
+    "correct": "5",
+    "explanation": "Die Schleife läuft für i = 0, 1, 2, 3 und 4. Das sind fünf Durchläufe."
+  },
+  {
+    "id": "M2_BRK_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "loop_control",
+    "question": "Was wird ausgegeben?\n\nfor i in range(5):\n    if i == 2:\n        continue\n    if i == 4:\n        break\n    print(i)",
+    "options": [
+      "0 1 3",
+      "0 1 2 3",
+      "0 1",
+      "0 1 3 4"
+    ],
+    "correct": "0 1 3",
+    "explanation": "Bei 2 wird die Ausgabe übersprungen. Bei 4 wird die Schleife beendet. Ausgegeben werden 0, 1 und 3. Allan Quatermain überspringt die Schlangengrube bei Raum 2 und verlässt den Tempel bei Raum 4, bevor die Decke einstürzt."
+  }
+]

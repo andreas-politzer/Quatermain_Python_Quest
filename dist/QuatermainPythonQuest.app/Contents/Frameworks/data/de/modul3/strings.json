@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M3_STR_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "strings",
+    "question": "Welcher Ausdruck ist ein String?",
+    "options": [
+      "\"Python\"",
+      "123",
+      "True",
+      "[1, 2, 3]"
+    ],
+    "correct": "\"Python\"",
+    "explanation": "Strings stehen in Anführungszeichen."
+  },
+  {
+    "id": "M3_STR_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "string_indexing",
+    "question": "Was wird ausgegeben?\n\ntext = \"Python\"\nprint(text[0])",
+    "options": [
+      "P",
+      "y",
+      "n",
+      "Error"
+    ],
+    "correct": "P",
+    "explanation": "Der erste Buchstabe hat den Index 0."
+  },
+  {
+    "id": "M3_STR_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "string_indexing",
+    "question": "Was wird ausgegeben?\n\ntext = \"Python\"\nprint(text[2])",
+    "options": [
+      "P",
+      "t",
+      "y",
+      "h"
+    ],
+    "correct": "t",
+    "explanation": "P=0, y=1, t=2."
+  },
+  {
+    "id": "M3_STR_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "string_indexing",
+    "question": "Was wird ausgegeben?\n\ntext = \"Python\"\nprint(text[-1])",
+    "options": [
+      "P",
+      "o",
+      "n",
+      "Error"
+    ],
+    "correct": "n",
+    "explanation": "Der Index -1 greift auf das letzte Zeichen zu."
+  },
+  {
+    "id": "M3_STR_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "strings",
+    "question": "Was wird ausgegeben?\n\nprint(\"Py\" + \"thon\")",
+    "options": [
+      "Py thon",
+      "Python",
+      "Python",
+      "Error"
+    ],
+    "correct": "Python",
+    "explanation": "Der Operator + verknüpft Strings."
+  },
+  {
+    "id": "M3_STR_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "strings",
+    "question": "Was wird ausgegeben?\n\nprint(\"Ha\" * 3)",
+    "options": [
+      "HaHa",
+      "HaHaHa",
+      "Ha 3",
+      "Error"
+    ],
+    "correct": "HaHaHa",
+    "explanation": "Strings können mit * wiederholt werden."
+  },
+  {
+    "id": "M3_STR_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "strings",
+    "question": "Was wird ausgegeben?\n\ntext = \"Python\"\nprint(len(text))",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "Error"
+    ],
+    "correct": "6",
+    "explanation": "Python besteht aus sechs Zeichen."
+  },
+  {
+    "id": "M3_STR_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "string_indexing",
+    "question": "Welche Exception tritt auf?\n\ntext = \"Python\"\nprint(text[10])",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "IndexError",
+      "KeyError"
+    ],
+    "correct": "IndexError",
+    "explanation": "Index 10 existiert nicht."
+  },
+  {
+    "id": "M3_STR_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "strings",
+    "question": "Was wird ausgegeben?\n\ntext = \"Python\"\nprint(text[0] + text[-1])",
+    "options": [
+      "Pn",
+      "Py",
+      "on",
+      "nn"
+    ],
+    "correct": "Pn",
+    "explanation": "Der erste Buchstabe ist P, der letzte n."
+  },
+  {
+    "id": "M3_STR_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "strings",
+    "question": "Was wird ausgegeben?\n\ntext = \"Python\"\nprint(len(text + \"3\"))",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "Error"
+    ],
+    "correct": "7",
+    "explanation": "Nach dem Anhängen von \"3\" enthält der String sieben Zeichen. Allan Quatermain hätte vielleicht eine magische Rune erwartet, Python zählt einfach nüchtern die Zeichen."
+  }
+]

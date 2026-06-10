@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M4_FNC_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "functions",
+    "question": "Which keyword is used to define a function?",
+    "options": [
+      "func",
+      "function",
+      "def",
+      "define"
+    ],
+    "correct": "def",
+    "explanation": "Functions are defined in Python using the def keyword. Every adventure begins with an entrance, and every function begins with def."
+  },
+  {
+    "id": "M4_FNC_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef greet():\n    print(\"Hello\")\n\ngreet()",
+    "options": [
+      "Hello",
+      "greet",
+      "None",
+      "Error"
+    ],
+    "correct": "Hello",
+    "explanation": "The function is called and prints the string. Allan presses a glowing temple button and receives a friendly greeting instead of a dart trap."
+  },
+  {
+    "id": "M4_FNC_003",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "functions",
+    "question": "How is a function called?",
+    "options": [
+      "greet",
+      "greet[]",
+      "greet()",
+      "call greet"
+    ],
+    "correct": "greet()",
+    "explanation": "The parentheses execute the function call. Without them, you only refer to the function instead of running it."
+  },
+  {
+    "id": "M4_FNC_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef greet():\n    print(\"Python\")\n\nprint(\"Start\")\ngreet()",
+    "options": [
+      "Python",
+      "Start",
+      "Start Python",
+      "Error"
+    ],
+    "correct": "Start Python",
+    "explanation": "First, Start is printed. Then the function runs and prints Python. Events occur in the order they are executed. *CLICK*"
+  },
+  {
+    "id": "M4_FNC_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef show():\n    print(\"A\")\n\nshow()\nshow()",
+    "options": [
+      "A",
+      "AA",
+      "A A",
+      "Error"
+    ],
+    "correct": "A A",
+    "explanation": "The function is executed twice. Each call runs the function body again. Allan opens the same secret door twice just to be sure."
+  },
+  {
+    "id": "M4_FNC_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "functions",
+    "question": "Which exception occurs?\n\nhello()",
+    "options": [
+      "TypeError",
+      "NameError",
+      "ValueError",
+      "IndexError"
+    ],
+    "correct": "NameError",
+    "explanation": "The function was never defined. Python has no idea what hello refers to."
+  },
+  {
+    "id": "M4_FNC_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef greet():\n    print(\"A\")\n\ngreet()\nprint(\"B\")",
+    "options": [
+      "A B",
+      "B A",
+      "AB",
+      "BA"
+    ],
+    "correct": "A B",
+    "explanation": "The function call executes first, then print(\"B\") runs. Python follows the instructions from top to bottom."
+  },
+  {
+    "id": "M4_FNC_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef test():\n    print(\"Temple\")\n\nfor i in range(2):\n    test()",
+    "options": [
+      "Temple",
+      "Temple Temple",
+      "2",
+      "Error"
+    ],
+    "correct": "Temple Temple",
+    "explanation": "The function is called during each loop iteration. Since the loop runs twice, Temple is printed twice. *WHOOSH* Two temple gates slide open."
+  },
+  {
+    "id": "M4_FNC_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef a():\n    print(\"A\")\n\ndef b():\n    print(\"B\")\n\na()\nb()",
+    "options": [
+      "A B",
+      "B A",
+      "AB",
+      "BA"
+    ],
+    "correct": "A B",
+    "explanation": "Functions execute in the order they are called. First a(), then b(). Even Indiana Jones would struggle if the order suddenly changed."
+  },
+  {
+    "id": "M4_FNC_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "functions",
+    "question": "What is the output?\n\ndef snake():\n    print(\"Python\")\n\nsnake()\nsnake()\nsnake()",
+    "options": [
+      "Python",
+      "Python Python",
+      "Python Python Python",
+      "Error"
+    ],
+    "correct": "Python Python Python",
+    "explanation": "Each function call executes the function body again. By the third Python snake priest, Allan Quatermain has already decided that this temple can keep its treasure. *RUMBLE*"
+  }
+]

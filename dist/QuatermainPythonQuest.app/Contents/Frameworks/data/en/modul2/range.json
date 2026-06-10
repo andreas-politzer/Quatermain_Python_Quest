@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_RNG_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nfor i in range(3):\n    print(i)",
+    "options": [
+      "0 1 2",
+      "1 2 3",
+      "0 1 2 3",
+      "3"
+    ],
+    "correct": "0 1 2",
+    "explanation": "range(3) generates the values 0, 1, and 2. Allan entered the first three chambers of the temple. Chamber 3 looked promising, but Python stopped one room earlier. *BEEP.*"
+  },
+  {
+    "id": "M2_RNG_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nprint(list(range(4)))",
+    "options": [
+      "[1, 2, 3, 4]",
+      "[0, 1, 2, 3]",
+      "[0, 1, 2, 3, 4]",
+      "[4]"
+    ],
+    "correct": "[0, 1, 2, 3]",
+    "explanation": "range(4) starts at 0 and stops before 4. Allan found four numbered stone tablets, but only the first four values made it onto the map. *CLICK.*"
+  },
+  {
+    "id": "M2_RNG_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nprint(list(range(1, 5)))",
+    "options": [
+      "[1, 2, 3, 4]",
+      "[1, 2, 3, 4, 5]",
+      "[0, 1, 2, 3, 4]",
+      "[5]"
+    ],
+    "correct": "[1, 2, 3, 4]",
+    "explanation": "The starting value is inclusive, while the ending value is exclusive. Allan received invitations to Temple Rooms 1 through 4. Room 5 was 'members only.' *LOCKED.*"
+  },
+  {
+    "id": "M2_RNG_004",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "range_function",
+    "question": "How many values does range(5) generate?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "Infinitely many"
+    ],
+    "correct": "5",
+    "explanation": "The generated values are 0, 1, 2, 3, and 4. That's five values in total. Allan counted them twice just to be sure. *DING!*"
+  },
+  {
+    "id": "M2_RNG_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nprint(list(range(2, 8, 2)))",
+    "options": [
+      "[2, 4, 6]",
+      "[2, 4, 6, 8]",
+      "[0, 2, 4, 6, 8]",
+      "[2, 6]"
+    ],
+    "correct": "[2, 4, 6]",
+    "explanation": "The third parameter specifies the step size. Starting at 2 and moving in steps of 2 gives 2, 4, and 6. The value 8 is not included because range stops before the end value. Like a synthesizer arpeggio from 1985, the pattern is precise. *BEEP. BOOP. BEEP.*"
+  },
+  {
+    "id": "M2_RNG_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nfor i in range(1, 4):\n    print(i)",
+    "options": [
+      "1 2 3",
+      "1 2 3 4",
+      "0 1 2 3",
+      "4"
+    ],
+    "correct": "1 2 3",
+    "explanation": "The value 4 is not part of the range. Allan was already celebrating his arrival at Chamber 4 when Python politely reminded him that the journey ends one room earlier. *THUD.*"
+  },
+  {
+    "id": "M2_RNG_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nprint(list(range(5, 0, -1)))",
+    "options": [
+      "[5, 4, 3, 2, 1]",
+      "[5, 4, 3, 2, 1, 0]",
+      "[0, 1, 2, 3, 4, 5]",
+      "Error"
+    ],
+    "correct": "[5, 4, 3, 2, 1]",
+    "explanation": "A negative step value counts backward. The sequence starts at 5 and decreases to 1. Allan activated the temple self-destruct countdown. The display flashed: 5... 4... 3... 2... 1... *BWAAAP.*"
+  },
+  {
+    "id": "M2_RNG_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nx = 0\nfor i in range(1, 4):\n    x += i\nprint(x)",
+    "options": [
+      "3",
+      "5",
+      "6",
+      "10"
+    ],
+    "correct": "6",
+    "explanation": "The values 1 + 2 + 3 add up to 6. Allan collected three golden relics worth one, two, and three points. The arcade score counter flashed 000006. *HIGH SCORE!*"
+  },
+  {
+    "id": "M2_RNG_009",
+    "difficulty": 5,
+    "question_type": "output_prediction",
+    "concept": "range_function",
+    "question": "What will be printed?\n\nprint(list(range(0)))",
+    "options": [
+      "[]",
+      "[0]",
+      "Error",
+      "None"
+    ],
+    "correct": "[]",
+    "explanation": "range(0) generates no values at all, so the result is an empty list. Allan opened an ancient treasure chest only to discover it was completely empty. Somewhere, a sad arcade sound effect played. *WOMP WOMP.*"
+  },
+  {
+    "id": "M2_RNG_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "range_function",
+    "question": "What will be printed?\n\ncount = 0\nfor i in range(2, 10, 3):\n    count += 1\nprint(count)",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "8"
+    ],
+    "correct": "3",
+    "explanation": "range(2, 10, 3) generates the values 2, 5, and 8. That means the loop runs three times, so count becomes 3. Allan hopped across temple stones numbered 2, 5, and 8. Missing a jump would have ended the adventure faster than a game of Dragon's Lair. *MISSION COMPLETE.*"
+  }
+]
