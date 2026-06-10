@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_LOP_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "while_loop",
+    "question": "Was wird ausgegeben?\n\nx = 1\n\nwhile x <= 3:\n    print(x)\n    x += 1",
+    "options": [
+      "1 2 3",
+      "1 2 3 4",
+      "1",
+      "Endlosschleife"
+    ],
+    "correct": "1 2 3",
+    "explanation": "Die Schleife läuft solange x kleiner oder gleich 3 ist. Die Werte 1, 2 und 3 werden ausgegeben, danach wird die Bedingung False. Allan Quatermain fand drei Tempelkammern, aber die vierte Tür blieb verschlossen."
+  },
+  {
+    "id": "M2_LOP_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "for_loop",
+    "question": "Was wird ausgegeben?\n\nfor i in [1, 2, 3]:\n    print(i)",
+    "options": [
+      "1 2 3",
+      "0 1 2",
+      "3 2 1",
+      "Error"
+    ],
+    "correct": "1 2 3",
+    "explanation": "Die Schleife besucht jedes Element der Liste der Reihe nach."
+  },
+  {
+    "id": "M2_LOP_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "while_loop",
+    "question": "Was wird ausgegeben?\n\nx = 0\n\nwhile x < 3:\n    x += 1\n\nprint(x)",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "correct": "3",
+    "explanation": "Die Schleife erhöht x bis die Bedingung x < 3 nicht mehr erfüllt ist."
+  },
+  {
+    "id": "M2_LOP_004",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "for_loop",
+    "question": "Welche Schleifenart wird typischerweise verwendet, wenn die Anzahl der Durchläufe bekannt ist?",
+    "options": [
+      "for",
+      "while",
+      "if",
+      "try"
+    ],
+    "correct": "for",
+    "explanation": "Eine for-Schleife eignet sich besonders für bekannte Iterationen."
+  },
+  {
+    "id": "M2_LOP_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "for_loop",
+    "question": "Was wird ausgegeben?\n\nfor i in range(3):\n    print(i)",
+    "options": [
+      "1 2 3",
+      "0 1 2",
+      "0 1 2 3",
+      "3"
+    ],
+    "correct": "0 1 2",
+    "explanation": "range(3) erzeugt die Werte 0, 1 und 2. Eine klassische PCEP-Frage."
+  },
+  {
+    "id": "M2_LOP_006",
+    "difficulty": 3,
+    "question_type": "code_analysis",
+    "concept": "while_loop",
+    "question": "Was wird ausgegeben?\n\nx = 1\n\nwhile x < 8:\n    x *= 2\n\nprint(x)",
+    "options": [
+      "4",
+      "8",
+      "16",
+      "32"
+    ],
+    "correct": "8",
+    "explanation": "Die Werte sind 1 → 2 → 4 → 8. Danach ist die Bedingung nicht mehr erfüllt."
+  },
+  {
+    "id": "M2_LOP_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "for_loop",
+    "question": "Was wird ausgegeben?\n\nfor i in range(1, 5):\n    print(i)",
+    "options": [
+      "1 2 3 4",
+      "1 2 3 4 5",
+      "0 1 2 3 4",
+      "2 3 4 5"
+    ],
+    "correct": "1 2 3 4",
+    "explanation": "Der Startwert ist inklusive, der Endwert ist exklusiv. Allan dachte, die Schatzkammer Nummer 5 wäre dabei, aber Python ließ ihn vor der Tür stehen."
+  },
+  {
+    "id": "M2_LOP_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "loop_control",
+    "question": "Was passiert?\n\nwhile True:\n    print(\"Python\")",
+    "options": [
+      "Eine Endlosschleife",
+      "SyntaxError",
+      "NameError",
+      "Die Schleife läuft einmal"
+    ],
+    "correct": "Eine Endlosschleife",
+    "explanation": "Die Bedingung wird niemals False. Das ist die berüchtigte Tempelfalle der Endlosschleifen."
+  },
+  {
+    "id": "M2_LOP_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "for_loop",
+    "question": "Was wird ausgegeben?\n\nx = 0\n\nfor i in range(4):\n    x += i\n\nprint(x)",
+    "options": [
+      "4",
+      "6",
+      "10",
+      "16"
+    ],
+    "correct": "6",
+    "explanation": "x sammelt die Werte 0 + 1 + 2 + 3. Das ergibt 6. Allan sammelte Goldmünzen, Python sammelt Zahlen."
+  },
+  {
+    "id": "M2_LOP_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "while_loop",
+    "question": "Was wird ausgegeben?\n\nx = 10\n\nwhile x > 1:\n    x //= 2\n\nprint(x)",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "5"
+    ],
+    "correct": "1",
+    "explanation": "10 → 5 → 2 → 1. Danach ist die Bedingung x > 1 nicht mehr erfüllt. Wie ein 80er-Actionheld würde Allan sagen: 'If it bleeds, we can kill it.' Die Schleife wurde jedenfalls besiegt."
+  }
+]

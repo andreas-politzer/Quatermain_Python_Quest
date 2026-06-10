@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M1_CNV_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(int(\"5\"))",
+    "options": [
+      "5",
+      "\"5\"",
+      "5.0",
+      "Error"
+    ],
+    "correct": "5",
+    "explanation": "int() wandelt die Zeichenkette \"5\" erfolgreich in die Ganzzahl 5 um."
+  },
+  {
+    "id": "M1_CNV_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(float(\"5\"))",
+    "options": [
+      "5",
+      "5.0",
+      "\"5\"",
+      "Error"
+    ],
+    "correct": "5.0",
+    "explanation": "float() erzeugt immer einen Float-Wert."
+  },
+  {
+    "id": "M1_CNV_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(str(7) + str(3))",
+    "options": [
+      "10",
+      "73",
+      "7 3",
+      "Error"
+    ],
+    "correct": "73",
+    "explanation": "Nach der Umwandlung in Strings werden die Werte verkettet."
+  },
+  {
+    "id": "M1_CNV_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(int(3.9))",
+    "options": [
+      "4",
+      "3.9",
+      "3",
+      "Error"
+    ],
+    "correct": "3",
+    "explanation": "int() schneidet den Nachkommateil ab und rundet nicht."
+  },
+  {
+    "id": "M1_CNV_005",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "type_conversion",
+    "question": "Welche Exception tritt auf?\n\nprint(int(\"3.14\"))",
+    "options": [
+      "TypeError",
+      "IndexError",
+      "ValueError",
+      "ZeroDivisionError"
+    ],
+    "correct": "ValueError",
+    "explanation": "\"3.14\" ist kein gültiger Integer-String für int()."
+  },
+  {
+    "id": "M1_CNV_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(int(float(\"3.14\")))",
+    "options": [
+      "3",
+      "3.14",
+      "4",
+      "Error"
+    ],
+    "correct": "3",
+    "explanation": "Zuerst entsteht 3.14 als Float, danach wird auf 3 gekürzt."
+  },
+  {
+    "id": "M1_CNV_007",
+    "difficulty": 4,
+    "question_type": "gap_fill",
+    "concept": "type_conversion",
+    "question": "Welcher Ausdruck vervollständigt die Zeile?\n\nprint( ___ (\"42\"))",
+    "options": [
+      "int",
+      "float",
+      "str",
+      "bool"
+    ],
+    "correct": "int",
+    "explanation": "int(\"42\") ergibt die Ganzzahl 42."
+  },
+  {
+    "id": "M1_CNV_008",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(bool(\"\"))",
+    "options": [
+      "True",
+      "False",
+      "\"\"",
+      "Error"
+    ],
+    "correct": "False",
+    "explanation": "Ein leerer String wird als False ausgewertet."
+  },
+  {
+    "id": "M1_CNV_009",
+    "difficulty": 5,
+    "question_type": "output_prediction",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(bool(\"Python\"))",
+    "options": [
+      "True",
+      "False",
+      "\"Python\"",
+      "Error"
+    ],
+    "correct": "True",
+    "explanation": "Jeder nicht-leere String ergibt bei bool() den Wert True."
+  },
+  {
+    "id": "M1_CNV_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "type_conversion",
+    "question": "Was wird ausgegeben?\n\nprint(str(int(float(\"8.9\"))) + \"!\")",
+    "options": [
+      "8.9!",
+      "9!",
+      "8!",
+      "Error"
+    ],
+    "correct": "8!",
+    "explanation": "float(\"8.9\") → 8.9, int(8.9) → 8, str(8) → \"8\", anschließend wird \"!\" angehängt."
+  }
+]

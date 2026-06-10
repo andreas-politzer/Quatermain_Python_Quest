@@ -1,15 +1,23 @@
 import json
 import random
 import os
+import sys
+
+
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', relative_path)
+
 
 class QuestEngine:
-    def __init__(self, data_dir="data", score_path="data/highscores.json"):
-        self.data_dir = data_dir
-        self.score_path = score_path
+    def __init__(self):
+        self.data_dir = resource_path("data")
+        self.score_path = resource_path(os.path.join("data", "highscores.json"))
         
         # Speicherstrukturen für die geladenen Fragen
-        self.all_questions = []      # Flacher Pool für "Alle Ebenen gemischt"
-        self.modules = {}            # Gruppiert nach Modul-Ordner: {"modul1": [...], "modul2": [...]}
+        self.all_questions = []
+        self.modules = {}
         
         # Spielzustand
         self.active_pool = []        
@@ -35,13 +43,10 @@ class QuestEngine:
             print(f"Warnung: Verzeichnis {target_path} existiert nicht!")
             return
 
-        # os.walk durchkämmt alle Unterordner (modul1, modul2, etc.)
         for root, dirs, files in os.walk(target_path):
             for file in files:
                 if file.endswith(".json"):
                     file_path = os.path.join(root, file)
-                    
-                    # Ordnername extrahieren (z. B. "modul1")
                     module_name = os.path.basename(root)
                     
                     try:
@@ -52,9 +57,7 @@ class QuestEngine:
                                 self.modules[module_name] = []
                                 
                             for q in questions_list:
-                                # Herkunftsmodul injizieren
                                 q["module_id"] = module_name
-                                
                                 self.all_questions.append(q)
                                 self.modules[module_name].append(q)
                                 
@@ -120,5 +123,6 @@ class QuestEngine:
         scores = sorted(scores, key=lambda x: x["score"], reverse=True)
         scores = scores[:10]
         
+        os.makedirs(os.path.dirname(self.score_path), exist_ok=True)
         with open(self.score_path, "w", encoding="utf-8") as f:
             json.dump(scores, f, indent=4, ensure_ascii=False)

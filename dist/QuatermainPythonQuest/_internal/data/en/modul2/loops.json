@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_LOP_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "while_loop",
+    "question": "What will be printed?\n\nx = 1\n\nwhile x <= 3:\n    print(x)\n    x += 1",
+    "options": [
+      "1 2 3",
+      "1 2 3 4",
+      "1",
+      "Infinite loop"
+    ],
+    "correct": "1 2 3",
+    "explanation": "The loop runs while x is less than or equal to 3. The values 1, 2, and 3 are printed. After that, the condition becomes False. Allan Quatermain discovered three temple chambers, but the fourth door remained locked. *CLUNK.*"
+  },
+  {
+    "id": "M2_LOP_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "for_loop",
+    "question": "What will be printed?\n\nfor i in [1, 2, 3]:\n    print(i)",
+    "options": [
+      "1 2 3",
+      "0 1 2",
+      "3 2 1",
+      "Error"
+    ],
+    "correct": "1 2 3",
+    "explanation": "The loop visits each element of the list in order. Allan walks through the temple room by room, never skipping ahead. *BEEP. BOOP.* Old-school adventure logic."
+  },
+  {
+    "id": "M2_LOP_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "while_loop",
+    "question": "What will be printed?\n\nx = 0\n\nwhile x < 3:\n    x += 1\n\nprint(x)",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "correct": "3",
+    "explanation": "The loop increases x until the condition x < 3 is no longer True. The final value is 3. Allan climbs three stone steps toward an ancient altar. The fourth step never happens because the quest objective has already been reached."
+  },
+  {
+    "id": "M2_LOP_004",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "for_loop",
+    "question": "Which type of loop is typically used when the number of iterations is known?",
+    "options": [
+      "for",
+      "while",
+      "if",
+      "try"
+    ],
+    "correct": "for",
+    "explanation": "A for loop is especially useful when the number of iterations is known in advance. Like a level select screen in an 80s arcade game, you already know how many stages are coming."
+  },
+  {
+    "id": "M2_LOP_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "for_loop",
+    "question": "What will be printed?\n\nfor i in range(3):\n    print(i)",
+    "options": [
+      "1 2 3",
+      "0 1 2",
+      "0 1 2 3",
+      "3"
+    ],
+    "correct": "0 1 2",
+    "explanation": "range(3) produces the values 0, 1, and 2. This is a classic PCEP exam question. Many adventurers expect a 3 to appear, but Python stops one room earlier. *WHOOSH.*"
+  },
+  {
+    "id": "M2_LOP_006",
+    "difficulty": 3,
+    "question_type": "code_analysis",
+    "concept": "while_loop",
+    "question": "What will be printed?\n\nx = 1\n\nwhile x < 8:\n    x *= 2\n\nprint(x)",
+    "options": [
+      "4",
+      "8",
+      "16",
+      "32"
+    ],
+    "correct": "8",
+    "explanation": "The values are 1 → 2 → 4 → 8. Once x becomes 8, the condition is no longer satisfied. Allan activates an ancient power crystal and watches the energy double with each pulse. *BWAAAP.* Maximum charge achieved."
+  },
+  {
+    "id": "M2_LOP_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "for_loop",
+    "question": "What will be printed?\n\nfor i in range(1, 5):\n    print(i)",
+    "options": [
+      "1 2 3 4",
+      "1 2 3 4 5",
+      "0 1 2 3 4",
+      "2 3 4 5"
+    ],
+    "correct": "1 2 3 4",
+    "explanation": "The start value is inclusive, while the end value is exclusive. Allan was convinced Treasure Chamber 5 would be included, but Python stopped him at the door. Just because it's nearby doesn't mean you're getting in. *LOCKED.*"
+  },
+  {
+    "id": "M2_LOP_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "loop_control",
+    "question": "What happens?\n\nwhile True:\n    print(\"Python\")",
+    "options": [
+      "An infinite loop",
+      "SyntaxError",
+      "NameError",
+      "The loop runs once"
+    ],
+    "correct": "An infinite loop",
+    "explanation": "The condition never becomes False, so the loop continues forever. This is the infamous Temple of Infinite Loops. Allan entered in 1987 and is reportedly still wandering the corridors. *BEEP. BOOP. BEEP. BOOP. BEEP. BOOP...*"
+  },
+  {
+    "id": "M2_LOP_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "for_loop",
+    "question": "What will be printed?\n\nx = 0\n\nfor i in range(4):\n    x += i\n\nprint(x)",
+    "options": [
+      "4",
+      "6",
+      "10",
+      "16"
+    ],
+    "correct": "6",
+    "explanation": "x collects the values 0 + 1 + 2 + 3, resulting in 6. Allan collects gold coins. Python collects numbers. The treasure room score counter flashes: *000006*. High score achieved."
+  },
+  {
+    "id": "M2_LOP_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "while_loop",
+    "question": "What will be printed?\n\nx = 10\n\nwhile x > 1:\n    x //= 2\n\nprint(x)",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "5"
+    ],
+    "correct": "1",
+    "explanation": "The values become 10 → 5 → 2 → 1. After that, the condition x > 1 is no longer True. Allan watches the ancient temple shield lose power level after power level until only a single glowing pixel remains. As an 80s action hero might say: 'If it bleeds, we can kill it.' The loop has been defeated. *MISSION COMPLETE.*"
+  }
+]

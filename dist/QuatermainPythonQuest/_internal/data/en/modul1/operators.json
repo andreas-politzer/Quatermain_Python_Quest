@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M1_OPR_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "addition",
+    "question": "What will be printed?\n\nprint(7 + 5)",
+    "options": [
+      "12",
+      "35",
+      "75",
+      "Error"
+    ],
+    "correct": "12",
+    "explanation": "Allan Quatermain stumbled into the simplest trap in the Python Temple. Fortunately, it was only addition. 7 + 5 equals 12. Even the crocodile could calculate that before disappearing into the swamp."
+  },
+  {
+    "id": "M1_OPR_002",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "division",
+    "question": "What will be printed?\n\nprint(10 / 2)",
+    "options": [
+      "5",
+      "5.0",
+      "10",
+      "Error"
+    ],
+    "correct": "5.0",
+    "explanation": "Quatermain pulled out his map of the temple. In Python, the / operator always returns a floating-point number. As an 80s action hero might say: 'Trust no one'—especially not the assumption that you'll get an integer here."
+  },
+  {
+    "id": "M1_OPR_003",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "floor_division",
+    "question": "What will be printed?\n\nprint(-7 // 2)",
+    "options": [
+      "-3",
+      "-4",
+      "3",
+      "4"
+    ],
+    "correct": "-4",
+    "explanation": "A classic temple trap! In Python, floor division always rounds toward negative infinity. Therefore, -3.5 becomes -4. Allan nearly fell into a pit because he only wanted to remove the decimal part."
+  },
+  {
+    "id": "M1_OPR_004",
+    "difficulty": 4,
+    "question_type": "gap_fill",
+    "concept": "modulo",
+    "question": "Which operator completes the expression?\n\n5 ___ 2 == 1",
+    "options": [
+      "%",
+      "/",
+      "//",
+      "**"
+    ],
+    "correct": "%",
+    "explanation": "The temple guardian demanded the remainder of a division. That is the job of the modulo operator %. As Indy almost said: it's not about the quotient, it's about the treasure left behind."
+  },
+  {
+    "id": "M1_OPR_005",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "modulo",
+    "question": "What will be printed?\n\nprint(-5 % 4)",
+    "options": [
+      "-1",
+      "1",
+      "3",
+      "-3"
+    ],
+    "correct": "3",
+    "explanation": "Welcome to the boss battle of operators. Python guarantees that: a = (a // b) * b + (a % b). Since -5 // 4 equals -2, the remainder must be 3. Allan stared at the ancient inscription and muttered: 'I've got a bad feeling about this math.'"
+  },
+  {
+    "id": "M1_OPR_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "floor_division",
+    "question": "What will be printed?\n\nprint(7 // 2)",
+    "options": [
+      "3",
+      "3.5",
+      "4",
+      "Error"
+    ],
+    "correct": "3",
+    "explanation": "Allan discovered an ancient inscription: floor division discards the fractional part. Therefore, 7 // 2 equals 3. The missing 0.5 was lost in the temple forever."
+  },
+  {
+    "id": "M1_OPR_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "exponentiation",
+    "question": "What will be printed?\n\nprint(2 ** 3)",
+    "options": [
+      "6",
+      "8",
+      "9",
+      "Error"
+    ],
+    "correct": "8",
+    "explanation": "The Temple of Powers opens its gates. 2 ** 3 means 2 raised to the power of 3 and evaluates to 8. Allan was relieved that no pit trap was involved this time."
+  },
+  {
+    "id": "M1_OPR_008",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "modulo",
+    "question": "What will be printed?\n\nprint(10 % 3)",
+    "options": [
+      "1",
+      "3",
+      "0",
+      "10"
+    ],
+    "correct": "1",
+    "explanation": "Modulo returns the remainder of a division. After dividing 10 by 3, the remainder is 1. That is exactly where Allan hid the treasure."
+  },
+  {
+    "id": "M1_OPR_009",
+    "difficulty": 5,
+    "question_type": "output_prediction",
+    "concept": "modulo",
+    "question": "What will be printed?\n\nprint(10 % -3)",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "correct": "-2",
+    "explanation": "A classic PCEP trap. Python ensures that the result has the same sign as the divisor. Allan only noticed the warning carved into the temple wall afterwards."
+  },
+  {
+    "id": "M1_OPR_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "mixed_operators",
+    "question": "What will be printed?\n\nprint(2 + 8 // 3)",
+    "options": [
+      "4",
+      "4.6666666667",
+      "5",
+      "Error"
+    ],
+    "correct": "4",
+    "explanation": "Floor division is evaluated before addition. 8 // 3 equals 2, then 2 + 2 = 4. As every temple adventurer knows: first the traps, then the treasure."
+  }
+]

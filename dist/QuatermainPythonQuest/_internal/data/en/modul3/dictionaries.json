@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M3_DCT_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "dictionaries",
+    "question": "Which expression creates a dictionary?",
+    "options": [
+      "{\"name\": \"Allan\"}",
+      "[\"name\", \"Allan\"]",
+      "(\"name\", \"Allan\")",
+      "\"name\": \"Allan\""
+    ],
+    "correct": "{\"name\": \"Allan\"}",
+    "explanation": "Dictionaries are created using curly braces and key-value pairs. Allan keeps a temple journal where every treasure has a name and a description. That's basically a dictionary with extra dust. *BEEP.*"
+  },
+  {
+    "id": "M3_DCT_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "dictionary_access",
+    "question": "What will be printed?\n\nhero = {\"name\": \"Allan\"}\nprint(hero[\"name\"])",
+    "options": [
+      "name",
+      "Allan",
+      "\"Allan\"",
+      "Error"
+    ],
+    "correct": "Allan",
+    "explanation": "The key is used to access its associated value. Allan looks up the key 'name' in his adventurer records and finds 'Allan'. *CLICK.* Information retrieved successfully."
+  },
+  {
+    "id": "M3_DCT_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "dictionary_access",
+    "question": "What will be printed?\n\ndata = {\"a\": 10, \"b\": 20}\nprint(data[\"b\"])",
+    "options": [
+      "10",
+      "20",
+      "b",
+      "Error"
+    ],
+    "correct": "20",
+    "explanation": "The key \"b\" refers to the value 20. Allan finds a stone tablet marked 'b' and discovers twenty gold coins hidden behind it. *DING!*"
+  },
+  {
+    "id": "M3_DCT_004",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "dictionary_keys",
+    "question": "What does a dictionary consist of?",
+    "options": [
+      "Indexes and values",
+      "Keys and values",
+      "Values only",
+      "Keys only"
+    ],
+    "correct": "Keys and values",
+    "explanation": "A dictionary stores data as key-value pairs. Think of it as Allan's treasure catalog: every artifact has a label and something associated with it. Very organized for a guy who spends most of his time running from boulders."
+  },
+  {
+    "id": "M3_DCT_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "dictionary_modification",
+    "question": "What will be printed?\n\ndata = {\"x\": 1}\ndata[\"y\"] = 2\nprint(data)",
+    "options": [
+      "{\"x\": 1}",
+      "{\"y\": 2}",
+      "{\"x\": 1, \"y\": 2}",
+      "Error"
+    ],
+    "correct": "{\"x\": 1, \"y\": 2}",
+    "explanation": "The assignment adds a new key-value pair to the dictionary. Allan discovers a new chamber and adds it to his map. *MAP UPDATED.* *BOOP.*"
+  },
+  {
+    "id": "M3_DCT_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "dictionary_access",
+    "question": "Which exception occurs?\n\ndata = {\"x\": 1}\nprint(data[\"y\"])",
+    "options": [
+      "IndexError",
+      "ValueError",
+      "KeyError",
+      "TypeError"
+    ],
+    "correct": "KeyError",
+    "explanation": "The key \"y\" does not exist in the dictionary. Allan searches his temple records for Chamber Y. Unfortunately, there is no Chamber Y. *KRRRZZT.* RECORD NOT FOUND."
+  },
+  {
+    "id": "M3_DCT_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "dictionary_methods",
+    "question": "What will be printed?\n\ndata = {\"x\": 1}\nprint(data.get(\"x\"))",
+    "options": [
+      "x",
+      "1",
+      "None",
+      "Error"
+    ],
+    "correct": "1",
+    "explanation": "The get() method returns the value associated with the specified key. Allan consults the temple archive and immediately finds the information he needs. No traps. No skeletons. Just data. A rare day indeed."
+  },
+  {
+    "id": "M3_DCT_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "dictionary_methods",
+    "question": "What will be printed?\n\ndata = {\"x\": 1}\nprint(data.get(\"y\"))",
+    "options": [
+      "1",
+      "y",
+      "None",
+      "Error"
+    ],
+    "correct": "None",
+    "explanation": "The get() method returns None when the key does not exist. Allan checks a dusty archive drawer labeled 'Y'. The drawer is completely empty. *CREAK...* Nothing there."
+  },
+  {
+    "id": "M3_DCT_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "dictionary_modification",
+    "question": "What will be printed?\n\ndata = {\"a\": 1}\ndata[\"a\"] = 5\nprint(data[\"a\"])",
+    "options": [
+      "1",
+      "5",
+      "a",
+      "Error"
+    ],
+    "correct": "5",
+    "explanation": "Existing values can be overwritten using their key. Allan updates an old treasure map after discovering the original estimate was wrong. Version 2.0 is now officially canon. *STAMP.*"
+  },
+  {
+    "id": "M3_DCT_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "dictionary_methods",
+    "question": "What will be printed?\n\ndata = {\"a\": 1, \"b\": 2}\ndel data[\"a\"]\nprint(data)",
+    "options": [
+      "{\"a\": 1, \"b\": 2}",
+      "{\"a\": 1}",
+      "{\"b\": 2}",
+      "Error"
+    ],
+    "correct": "{\"b\": 2}",
+    "explanation": "The del statement removes the key-value pair associated with the specified key. Allan Quatermain was relieved to discover that unwanted temple keys are easier to get rid of than crocodiles. Somewhere nearby, a pixelated swamp monster hissed in disappointment. *HISS... BWAAAP.*"
+  }
+]

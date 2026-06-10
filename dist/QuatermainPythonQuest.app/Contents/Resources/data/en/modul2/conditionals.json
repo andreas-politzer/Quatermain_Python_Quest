@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_CND_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "if_statement",
+    "question": "What will be printed?\n\nif True:\n    print(\"Python\")",
+    "options": [
+      "Python",
+      "True",
+      "Nothing",
+      "Error"
+    ],
+    "correct": "Python",
+    "explanation": "The condition is True, so the indented block is executed. *CLICK.* Allan Quatermain discovered a temple door labeled 'TRUE'. He pushed it open without hesitation and found a treasure chest glowing in 16-color VGA graphics. Python behaves the same way: when a condition is True, it enters the code block. *DING!*"
+  },
+  {
+    "id": "M2_CND_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "if_statement",
+    "question": "What will be printed?\n\nif False:\n    print(\"Python\")",
+    "options": [
+      "Python",
+      "False",
+      "Nothing",
+      "Error"
+    ],
+    "correct": "Nothing",
+    "explanation": "The condition is False, so the indented block is skipped. Allan spotted a trapdoor marked 'FALSE' and wisely chose not to step on it. Somewhere in the distance a Ghostbusters-style warning siren echoed through the temple. *BWAAAP.* Python makes the same choice and simply moves on."
+  },
+  {
+    "id": "M2_CND_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "if_else",
+    "question": "What will be printed?\n\nx = 5\n\nif x > 3:\n    print(\"A\")\nelse:\n    print(\"B\")",
+    "options": [
+      "A",
+      "B",
+      "AB",
+      "Error"
+    ],
+    "correct": "A",
+    "explanation": "Since 5 is greater than 3, the if branch executes. The else branch is ignored. In Allan's temple there are often two corridors leading forward, but Python always chooses exactly the path whose condition evaluates to True. *WHOOSH.* It's a bit like choosing the correct grail in an old adventure game."
+  },
+  {
+    "id": "M2_CND_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "if_else",
+    "question": "What will be printed?\n\nx = 2\n\nif x > 3:\n    print(\"A\")\nelse:\n    print(\"B\")",
+    "options": [
+      "A",
+      "B",
+      "AB",
+      "Error"
+    ],
+    "correct": "B",
+    "explanation": "The condition x > 3 is False, so the else block runs. Allan followed the wrong treasure map and ended up in the alternate corridor. *BONK.* As the Goonies would tell you, not every tunnel leads to One-Eyed Willy's treasure."
+  },
+  {
+    "id": "M2_CND_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "if_statement",
+    "question": "What will be printed?\n\nif 1:\n    print(\"Temple\")",
+    "options": [
+      "Temple",
+      "1",
+      "Nothing",
+      "Error"
+    ],
+    "correct": "Temple",
+    "explanation": "In Python, many values are interpreted as either True or False. The number 1 is considered True. Allan found an ancient stone tablet that read: 'Roads? Where we're going, we don't need roads.' Python added a second line underneath: 'But we do need truthy values.' *BEEP BOOP.*"
+  },
+  {
+    "id": "M2_CND_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "if_statement",
+    "question": "What will be printed?\n\nif 0:\n    print(\"Temple\")",
+    "options": [
+      "Temple",
+      "0",
+      "Nothing",
+      "Error"
+    ],
+    "correct": "Nothing",
+    "explanation": "The number 0 is interpreted as False. Therefore, the code block is not executed. This is a classic PCEP exam trap. Allan inserted a coin into an arcade machine, but the display flashed 'CREDITS: 0'. No credits, no game. No truthy value, no code execution. *KRRRZZT.*"
+  },
+  {
+    "id": "M2_CND_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "if_statement",
+    "question": "What will be printed?\n\nif \"Python\":\n    print(\"Quest\")",
+    "options": [
+      "Quest",
+      "Python",
+      "Nothing",
+      "Error"
+    ],
+    "correct": "Quest",
+    "explanation": "Non-empty strings are considered True. Therefore, the code block executes. Allan once found a note tucked into a dusty temple wall: 'She gave me a pen. I gave her my heart.' The message made no sense whatsoever, but it wasn't empty, and that's all Python cares about. *DING!*"
+  },
+  {
+    "id": "M2_CND_008",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "if_statement",
+    "question": "What will be printed?\n\nif \"\":\n    print(\"Quest\")",
+    "options": [
+      "Quest",
+      "\"\"",
+      "Nothing",
+      "Error"
+    ],
+    "correct": "Nothing",
+    "explanation": "An empty string is interpreted as False, so the block is skipped. Allan unfolded an ancient treasure map only to discover it was completely blank. *SAD ARCADE NOISES.* An empty map won't help a treasure hunter, and an empty string won't satisfy Python either."
+  },
+  {
+    "id": "M2_CND_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "nested_conditions",
+    "question": "What will be printed?\n\nx = 5\n\nif x > 0:\n    if x < 10:\n        print(\"A\")\n    else:\n        print(\"B\")",
+    "options": [
+      "A",
+      "B",
+      "AB",
+      "Nothing"
+    ],
+    "correct": "A",
+    "explanation": "Both conditions are satisfied. x is greater than 0 and less than 10, so 'A' is printed. Allan had to pass through two temple gates in sequence. *CLUNK.* *CLUNK.* Only after passing both tests did the treasure chamber open. It's the programming equivalent of finding both halves of a secret key before the final level."
+  },
+  {
+    "id": "M2_CND_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "if_else",
+    "question": "What will be printed?\n\nx = 10\n\nif x > 10:\n    print(\"A\")\nelse:\n    print(\"B\")",
+    "options": [
+      "A",
+      "B",
+      "AB",
+      "Nothing"
+    ],
+    "correct": "B",
+    "explanation": "The condition says 'greater than 10', not 'greater than or equal to 10'. Since x is exactly 10, the condition evaluates to False and the else branch runs. Allan missed the jump by a single pixel and activated the trapdoor. As John Bender said in The Breakfast Club: 'Don't mess with the bull, young man. You'll get the horns.' In Python, tiny differences can completely change the outcome. *THUD.*"
+  }
+]

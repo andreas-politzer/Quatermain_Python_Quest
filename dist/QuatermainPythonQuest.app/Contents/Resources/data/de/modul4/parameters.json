@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M4_PRM_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "parameters",
+    "question": "Wie nennt man die Variable in einer Funktionsdefinition?\n\ndef greet(name):\n    pass",
+    "options": [
+      "Argument",
+      "Parameter",
+      "Variable",
+      "Literal"
+    ],
+    "correct": "Parameter",
+    "explanation": "name ist ein Parameter der Funktion."
+  },
+  {
+    "id": "M4_PRM_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "parameters",
+    "question": "Was wird ausgegeben?\n\ndef greet(name):\n    print(name)\n\ngreet(\"Allan\")",
+    "options": [
+      "name",
+      "Allan",
+      "\"Allan\"",
+      "Error"
+    ],
+    "correct": "Allan",
+    "explanation": "Der übergebene Wert wird dem Parameter name zugewiesen."
+  },
+  {
+    "id": "M4_PRM_003",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "arguments",
+    "question": "Wie nennt man den Wert beim Funktionsaufruf?\n\ngreet(\"Allan\")",
+    "options": [
+      "Parameter",
+      "Argument",
+      "Literalwert",
+      "Referenz"
+    ],
+    "correct": "Argument",
+    "explanation": "\"Allan\" ist das Argument beim Aufruf."
+  },
+  {
+    "id": "M4_PRM_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "parameters",
+    "question": "Was wird ausgegeben?\n\ndef add(a, b):\n    print(a + b)\n\nadd(2, 3)",
+    "options": [
+      "5",
+      "23",
+      "2",
+      "3"
+    ],
+    "correct": "5",
+    "explanation": "Die beiden Argumente werden addiert."
+  },
+  {
+    "id": "M4_PRM_005",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "parameters",
+    "question": "Welche Exception tritt auf?\n\ndef greet(name):\n    print(name)\n\ngreet()",
+    "options": [
+      "ValueError",
+      "NameError",
+      "TypeError",
+      "IndexError"
+    ],
+    "correct": "TypeError",
+    "explanation": "Das benötigte Argument fehlt."
+  },
+  {
+    "id": "M4_PRM_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "parameters",
+    "question": "Was wird ausgegeben?\n\ndef greet(name, age):\n    print(name)\n\ngreet(\"Allan\", 42)",
+    "options": [
+      "Allan",
+      "42",
+      "Allan 42",
+      "Error"
+    ],
+    "correct": "Allan",
+    "explanation": "Nur der Parameter name wird ausgegeben."
+  },
+  {
+    "id": "M4_PRM_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "default_parameters",
+    "question": "Was wird ausgegeben?\n\ndef greet(name=\"Explorer\"):\n    print(name)\n\ngreet()",
+    "options": [
+      "Explorer",
+      "name",
+      "None",
+      "Error"
+    ],
+    "correct": "Explorer",
+    "explanation": "Der Standardwert wird verwendet, wenn kein Argument übergeben wird."
+  },
+  {
+    "id": "M4_PRM_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "default_parameters",
+    "question": "Was wird ausgegeben?\n\ndef greet(name=\"Explorer\"):\n    print(name)\n\ngreet(\"Allan\")",
+    "options": [
+      "Explorer",
+      "Allan",
+      "name",
+      "Error"
+    ],
+    "correct": "Allan",
+    "explanation": "Ein übergebenes Argument überschreibt den Standardwert."
+  },
+  {
+    "id": "M4_PRM_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "parameters",
+    "question": "Was wird ausgegeben?\n\ndef show(a, b):\n    print(a)\n\nshow(b=2, a=1)",
+    "options": [
+      "1",
+      "2",
+      "12",
+      "Error"
+    ],
+    "correct": "1",
+    "explanation": "Bei benannten Argumenten zählt der Name, nicht die Position."
+  },
+  {
+    "id": "M4_PRM_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "parameters",
+    "question": "Was wird ausgegeben?\n\ndef combine(a, b, c):\n    print(a + b + c)\n\ncombine(1, 2, 3)",
+    "options": [
+      "5",
+      "6",
+      "123",
+      "Error"
+    ],
+    "correct": "6",
+    "explanation": "Alle drei Argumente werden addiert. Allan Quatermain würde sagen: Drei Tempelschlüssel sind besser als einer."
+  }
+]

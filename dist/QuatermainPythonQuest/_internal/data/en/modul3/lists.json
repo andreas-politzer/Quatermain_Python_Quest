@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M3_LST_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "lists",
+    "question": "Which expression creates a list?",
+    "options": [
+      "[1, 2, 3]",
+      "(1, 2, 3)",
+      "{1, 2, 3}",
+      "\"1, 2, 3\""
+    ],
+    "correct": "[1, 2, 3]",
+    "explanation": "Lists are created using square brackets. Allan found an ancient temple inventory written on a stone tablet. It looked suspiciously like a Python list. *BEEP.*"
+  },
+  {
+    "id": "M3_LST_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "list_indexing",
+    "question": "What will be printed?\n\nnumbers = [10, 20, 30]\nprint(numbers[0])",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Error"
+    ],
+    "correct": "10",
+    "explanation": "Lists start at index 0. The first element is therefore 10. Allan opened the first treasure chest in the room and found ten gold coins. *DING!*"
+  },
+  {
+    "id": "M3_LST_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "list_indexing",
+    "question": "What will be printed?\n\nnumbers = [10, 20, 30]\nprint(numbers[2])",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Error"
+    ],
+    "correct": "30",
+    "explanation": "The third item is located at index 2. Allan counted three stone idols and inspected the third one. It turned out to be worth thirty ancient credits. *BOOP.*"
+  },
+  {
+    "id": "M3_LST_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "list_methods",
+    "question": "What will be printed?\n\nnumbers = [1, 2]\nnumbers.append(3)\nprint(numbers)",
+    "options": [
+      "[1, 2]",
+      "[1, 2, 3]",
+      "[3]",
+      "Error"
+    ],
+    "correct": "[1, 2, 3]",
+    "explanation": "append() adds an element to the end of the list. Allan discovered a third map fragment and added it to his collection. *MAP UPDATED.*"
+  },
+  {
+    "id": "M3_LST_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "list_methods",
+    "question": "What will be printed?\n\nnumbers = [1, 2, 3]\nnumbers.pop()\nprint(numbers)",
+    "options": [
+      "[1, 2, 3]",
+      "[1, 2]",
+      "[2, 3]",
+      "[3]"
+    ],
+    "correct": "[1, 2]",
+    "explanation": "By default, pop() removes the last element from a list. Allan dropped the final item from his backpack to outrun a giant rolling boulder. Very practical. Very 1980s. *RUMBLE...*"
+  },
+  {
+    "id": "M3_LST_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "list_indexing",
+    "question": "Which exception occurs?\n\nnumbers = [1, 2, 3]\nprint(numbers[5])",
+    "options": [
+      "TypeError",
+      "ValueError",
+      "IndexError",
+      "KeyError"
+    ],
+    "correct": "IndexError",
+    "explanation": "Index 5 does not exist in the list. Allan searched for Room 5 in a temple that only had three rooms. Python responded with an IndexError. *KRRRZZT.* INVALID DESTINATION."
+  },
+  {
+    "id": "M3_LST_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "list_methods",
+    "question": "What will be printed?\n\nnumbers = [1]\nnumbers.append(2)\nnumbers.append(3)\nprint(len(numbers))",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": "3",
+    "explanation": "After two append() calls, the list contains three elements. Allan assembled three pieces of a mysterious crystal key. Somewhere, a synth soundtrack started playing. *BEEP. BOOP. BWAAAP.*"
+  },
+  {
+    "id": "M3_LST_008",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "list_indexing",
+    "question": "What will be printed?\n\nnumbers = [10, 20, 30]\nprint(numbers[-1])",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Error"
+    ],
+    "correct": "30",
+    "explanation": "The index -1 refers to the last element in the list. Allan skips to the final page of an ancient temple manual instead of reading the whole thing. Efficient adventuring."
+  },
+  {
+    "id": "M3_LST_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "lists",
+    "question": "What will be printed?\n\nnumbers = [1, 2]\nnumbers = numbers + [3]\nprint(numbers)",
+    "options": [
+      "[1, 2]",
+      "[3]",
+      "[1, 2, 3]",
+      "Error"
+    ],
+    "correct": "[1, 2, 3]",
+    "explanation": "The + operator creates a new list containing the combined elements. Allan joined two pieces of a treasure map with a newly discovered third fragment. Suddenly the route to the hidden chamber became visible. *CLICK.*"
+  },
+  {
+    "id": "M3_LST_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "list_methods",
+    "question": "What will be printed?\n\nnumbers = [1, 2, 3]\ndel numbers[1]\nprint(numbers)",
+    "options": [
+      "[1, 2, 3]",
+      "[2, 3]",
+      "[1, 3]",
+      "[1, 2]"
+    ],
+    "correct": "[1, 3]",
+    "explanation": "The del statement removes the element at the specified position. Allan removed the second torch from a wall puzzle and a secret passage immediately opened. As every 80s adventure hero knows, removing random objects is usually the correct solution. *SECRET DOOR OPENED.*"
+  }
+]

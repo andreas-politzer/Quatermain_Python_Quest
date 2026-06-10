@@ -9,6 +9,8 @@ def main():
     ctk.set_default_color_theme("green")
 
     root = ctk.CTk()
+    root.geometry("900x650")  # Erzwingt das perfekte Breitbild-Format
+    root.resizable(False, False)  # Verhindert, dass jemand das Layout verzerrt
 
     # Instanziierung der beiden Kern-Komponenten
     engine = QuestEngine()

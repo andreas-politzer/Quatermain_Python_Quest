@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M2_BRK_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "break_statement",
+    "question": "Which statement immediately terminates a loop?",
+    "options": [
+      "continue",
+      "break",
+      "stop",
+      "exit"
+    ],
+    "correct": "break",
+    "explanation": "The break statement immediately terminates the currently running loop. *CLUNK.* Allan pulls the emergency lever, the temple gate slams shut, and the level ends right there. No extra turns. No bonus round."
+  },
+  {
+    "id": "M2_BRK_002",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "continue_statement",
+    "question": "Which statement skips the rest of the current loop iteration?",
+    "options": [
+      "break",
+      "continue",
+      "skip",
+      "next"
+    ],
+    "correct": "continue",
+    "explanation": "The continue statement jumps directly to the next iteration of the loop. Allan spots a suspicious pressure plate, leaps over it, and keeps running deeper into the temple. *WHOOSH.* The adventure continues."
+  },
+  {
+    "id": "M2_BRK_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "break_statement",
+    "question": "What will be printed?\n\nfor i in range(5):\n    if i == 3:\n        break\n    print(i)",
+    "options": [
+      "0 1 2",
+      "0 1 2 3",
+      "3",
+      "0 1 2 3 4"
+    ],
+    "correct": "0 1 2",
+    "explanation": "As soon as i reaches the value 3, break terminates the loop. The values 0, 1, and 2 are printed before that happens. Allan reaches Chamber 3, hears ominous temple music, and immediately turns around. *BWAAAP.* Game over avoided."
+  },
+  {
+    "id": "M2_BRK_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "continue_statement",
+    "question": "What will be printed?\n\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)",
+    "options": [
+      "0 1 3 4",
+      "0 1 2 3 4",
+      "2",
+      "0 1"
+    ],
+    "correct": "0 1 3 4",
+    "explanation": "The value 2 is skipped, while all other values are printed. Allan sees Room 2 marked 'SNAKES'. Being a sensible treasure hunter, he skips it and keeps moving. *HISS... WHOOSH.*"
+  },
+  {
+    "id": "M2_BRK_005",
+    "difficulty": 3,
+    "question_type": "code_analysis",
+    "concept": "break_statement",
+    "question": "What will be printed?\n\nx = 0\nwhile True:\n    x += 1\n    if x == 4:\n        break\nprint(x)",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "Infinite loop"
+    ],
+    "correct": "4",
+    "explanation": "The loop continues until x reaches the value 4. At that point, break ends the loop and x is printed. *DING!* Allan collects the fourth crystal skull, unlocks the exit door, and escapes before the temple can collapse."
+  },
+  {
+    "id": "M2_BRK_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "continue_statement",
+    "question": "What will be printed?\n\nfor i in range(1, 6):\n    if i % 2 == 0:\n        continue\n    print(i)",
+    "options": [
+      "1 3 5",
+      "2 4",
+      "1 2 3 4 5",
+      "0 1 3 5"
+    ],
+    "correct": "1 3 5",
+    "explanation": "All even numbers are skipped because continue executes whenever i is evenly divisible by 2. Only 1, 3, and 5 are printed. Allan only steps on the odd-numbered temple tiles. The even ones trigger laser beams straight out of an 80s arcade cabinet. *PEW! PEW!*"
+  },
+  {
+    "id": "M2_BRK_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "break_statement",
+    "question": "What will be printed?\n\nfor i in range(3):\n    print(i)\n    break",
+    "options": [
+      "0",
+      "0 1",
+      "0 1 2",
+      "Nothing"
+    ],
+    "correct": "0",
+    "explanation": "After the first iteration, break immediately terminates the loop. Only 0 is printed. Allan enters the temple, takes exactly one step, hears the opening notes of the Imperial March, and decides he's seen enough. *THUD.*"
+  },
+  {
+    "id": "M2_BRK_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "continue_statement",
+    "question": "What will be printed?\n\nx = 0\nfor i in range(5):\n    if i == 2:\n        continue\n    x += i\nprint(x)",
+    "options": [
+      "8",
+      "10",
+      "6",
+      "4"
+    ],
+    "correct": "8",
+    "explanation": "The values 0, 1, 3, and 4 are added together. The value 2 is skipped because continue prevents it from being added. The calculation is 0 + 1 + 3 + 4 = 8. Allan found four gold coins but ignored the cursed coin marked with a glowing number 2. Smart move."
+  },
+  {
+    "id": "M2_BRK_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "break_statement",
+    "question": "What will be printed?\n\ncount = 0\nfor i in range(10):\n    count += 1\n    if i == 4:\n        break\nprint(count)",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "10"
+    ],
+    "correct": "5",
+    "explanation": "The loop runs for i = 0, 1, 2, 3, and 4. That makes five iterations in total. When i becomes 4, break stops the loop. Allan clears five temple rooms before discovering the giant rolling boulder. At that point, continuing seems unwise. *RUMBLE... RUMBLE...*"
+  },
+  {
+    "id": "M2_BRK_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "loop_control",
+    "question": "What will be printed?\n\nfor i in range(5):\n    if i == 2:\n        continue\n    if i == 4:\n        break\n    print(i)",
+    "options": [
+      "0 1 3",
+      "0 1 2 3",
+      "0 1",
+      "0 1 3 4"
+    ],
+    "correct": "0 1 3",
+    "explanation": "When i is 2, continue skips the print statement. When i is 4, break terminates the loop. Therefore, only 0, 1, and 3 are printed. Allan Quatermain leaps over the snake pit in Room 2, reaches Room 4, sees the ceiling starting to collapse, and immediately heads for the exit. *BEEP. BOOP. BWAAAP.* CONGRATULATIONS, PLAYER ONE."
+  }
+]

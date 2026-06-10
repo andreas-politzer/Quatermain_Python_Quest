@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M1_VAR_001",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "variables",
+    "question": "Was wird ausgegeben?\n\nx = 5\nprint(x)",
+    "options": [
+      "5",
+      "x",
+      "\"5\"",
+      "Error"
+    ],
+    "correct": "5",
+    "explanation": "Die Variable x enthält den Wert 5."
+  },
+  {
+    "id": "M1_VAR_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 5\nx = 7\nprint(x)",
+    "options": [
+      "5",
+      "7",
+      "57",
+      "Error"
+    ],
+    "correct": "7",
+    "explanation": "Die zweite Zuweisung überschreibt den alten Wert."
+  },
+  {
+    "id": "M1_VAR_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 3\ny = x\nprint(y)",
+    "options": [
+      "x",
+      "y",
+      "3",
+      "Error"
+    ],
+    "correct": "3",
+    "explanation": "y erhält den Wert von x."
+  },
+  {
+    "id": "M1_VAR_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 1\nx = x + 1\nprint(x)",
+    "options": [
+      "1",
+      "2",
+      "11",
+      "Error"
+    ],
+    "correct": "2",
+    "explanation": "x wird um 1 erhöht."
+  },
+  {
+    "id": "M1_VAR_005",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "variables",
+    "question": "Welche Exception tritt auf?\n\nx = 5\nprint(X)",
+    "options": [
+      "TypeError",
+      "ValueError",
+      "NameError",
+      "IndexError"
+    ],
+    "correct": "NameError",
+    "explanation": "Python unterscheidet zwischen x und X."
+  },
+  {
+    "id": "M1_VAR_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 10\ny = x\nx = 20\nprint(y)",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Error"
+    ],
+    "correct": "10",
+    "explanation": "y behält den Wert, den x zum Zeitpunkt der Zuweisung hatte."
+  },
+  {
+    "id": "M1_VAR_007",
+    "difficulty": 4,
+    "question_type": "output_prediction",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 5\ny = x\nx += 1\nprint(y)",
+    "options": [
+      "5",
+      "6",
+      "11",
+      "Error"
+    ],
+    "correct": "5",
+    "explanation": "y wird durch die spätere Änderung von x nicht beeinflusst."
+  },
+  {
+    "id": "M1_VAR_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 1\ny = 2\nx, y = y, x\nprint(x, y)",
+    "options": [
+      "1 2",
+      "2 1",
+      "2 2",
+      "1 1"
+    ],
+    "correct": "2 1",
+    "explanation": "Die Werte von x und y werden vertauscht."
+  },
+  {
+    "id": "M1_VAR_009",
+    "difficulty": 5,
+    "question_type": "output_prediction",
+    "concept": "assignment",
+    "question": "Was wird ausgegeben?\n\nx = 2\ny = x\nx = x * x\nprint(y)",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "Error"
+    ],
+    "correct": "2",
+    "explanation": "y bleibt unverändert bei seinem ursprünglichen Wert."
+  },
+  {
+    "id": "M1_VAR_010",
+    "difficulty": 5,
+    "question_type": "gap_fill",
+    "concept": "assignment",
+    "question": "Welcher Ausdruck vervollständigt die Zeile?\n\nx ___ 5",
+    "options": [
+      "=",
+      "==",
+      ":=",
+      "=>"
+    ],
+    "correct": "=",
+    "explanation": "Das Gleichheitszeichen = weist einer Variable einen Wert zu."
+  }
+]

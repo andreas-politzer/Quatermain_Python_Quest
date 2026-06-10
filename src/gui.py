@@ -8,6 +8,13 @@ import os
 import subprocess
 from PIL import Image, ImageTk
 
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_dir, relative_path)
+
+
 class QuatermainGUI:
     def __init__(self, root, engine):
         self.root = root
@@ -65,8 +72,7 @@ class QuatermainGUI:
 
     def load_background_images(self):
         """Lädt die Grafiken vorab und konvertiert sie für Tkinter."""
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        graphics_dir = os.path.join(base_dir, "graphics")
+        graphics_dir = resource_path("graphics")
         
         if not os.path.exists(graphics_dir):
             os.makedirs(graphics_dir)
@@ -112,8 +118,7 @@ class QuatermainGUI:
 
     def get_audio_path(self, filename):
         """Ermittelt den absoluten Pfad zu einer Sounddatei im audio/-Ordner."""
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        return os.path.join(base_dir, "audio", filename)
+        return resource_path(os.path.join("audio", filename))
 
     def start_music_loop(self, track_name):
         """Startet eine Hintergrundmusik im Loop, falls sie nicht schon läuft."""
@@ -356,7 +361,7 @@ class QuatermainGUI:
         )
         btn_quit.pack(side="left", padx=10)
         
-        hearts = "HP " * self.engine.lives
+        hearts = "🐍 " * self.engine.lives
         lives_label = ctk.CTkLabel(status_frame, text=f"LIVES: {hearts}", font=("Courier New", 14, "bold"), text_color="#FF3333")
         lives_label.pack(side="left", padx=10)
         

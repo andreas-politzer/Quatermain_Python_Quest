@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M4_ERR_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "exceptions",
+    "question": "What does Python call a runtime error?",
+    "options": [
+      "Exception",
+      "Loop",
+      "Function",
+      "Parameter"
+    ],
+    "correct": "Exception",
+    "explanation": "Exceptions signal errors that occur while a program is running. When Allan triggers a hidden temple trap, Python would call that an exception. *BWAAAP*"
+  },
+  {
+    "id": "M4_ERR_002",
+    "difficulty": 1,
+    "question_type": "error_detection",
+    "concept": "zerodivisionerror",
+    "question": "Which exception occurs?\n\nprint(10 / 0)",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "ZeroDivisionError",
+      "IndexError"
+    ],
+    "correct": "ZeroDivisionError",
+    "explanation": "Division by zero is not allowed. Even in an ancient temple, nobody can split ten gold coins into zero piles."
+  },
+  {
+    "id": "M4_ERR_003",
+    "difficulty": 2,
+    "question_type": "error_detection",
+    "concept": "nameerror",
+    "question": "Which exception occurs?\n\nprint(hero)",
+    "options": [
+      "TypeError",
+      "NameError",
+      "ValueError",
+      "KeyError"
+    ],
+    "correct": "NameError",
+    "explanation": "The variable was never defined. Allan cannot consult a treasure map that does not exist."
+  },
+  {
+    "id": "M4_ERR_004",
+    "difficulty": 2,
+    "question_type": "error_detection",
+    "concept": "valueerror",
+    "question": "Which exception occurs?\n\nint(\"Python\")",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "NameError",
+      "IndexError"
+    ],
+    "correct": "ValueError",
+    "explanation": "The string cannot be converted into an integer. Python is a programming language, not a number."
+  },
+  {
+    "id": "M4_ERR_005",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "typeerror",
+    "question": "Which exception occurs?\n\nprint(\"5\" + 5)",
+    "options": [
+      "TypeError",
+      "ValueError",
+      "NameError",
+      "KeyError"
+    ],
+    "correct": "TypeError",
+    "explanation": "A string cannot be added directly to a number. Python refuses to mix artifacts from different dimensions. *KRRRZZT*"
+  },
+  {
+    "id": "M4_ERR_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "indexerror",
+    "question": "Which exception occurs?\n\nnumbers = [1, 2, 3]\nprint(numbers[10])",
+    "options": [
+      "KeyError",
+      "IndexError",
+      "ValueError",
+      "TypeError"
+    ],
+    "correct": "IndexError",
+    "explanation": "The index does not exist. The list has only three elements, not eleven."
+  },
+  {
+    "id": "M4_ERR_007",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "keyerror",
+    "question": "Which exception occurs?\n\ndata = {\"name\": \"Allan\"}\nprint(data[\"age\"])",
+    "options": [
+      "IndexError",
+      "TypeError",
+      "KeyError",
+      "NameError"
+    ],
+    "correct": "KeyError",
+    "explanation": "The key does not exist in the dictionary. Allan found the name plaque, but the age plaque is missing from the temple records."
+  },
+  {
+    "id": "M4_ERR_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "typeerror",
+    "question": "Which exception occurs?\n\nlen(5)",
+    "options": [
+      "ValueError",
+      "KeyError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": "TypeError",
+    "explanation": "len() expects an object with a length, not a number. A single stone idol has weight, not length in the Python sense."
+  },
+  {
+    "id": "M4_ERR_009",
+    "difficulty": 5,
+    "question_type": "error_detection",
+    "concept": "unboundlocalerror",
+    "question": "Which exception occurs?\n\nx = 10\n\ndef test():\n    print(x)\n    x = 5\n\ntest()",
+    "options": [
+      "NameError",
+      "ValueError",
+      "TypeError",
+      "UnboundLocalError"
+    ],
+    "correct": "UnboundLocalError",
+    "explanation": "Python treats x as a local variable and detects that it is accessed before assignment. This is one of those traps that catches explorers and programmers alike. *CLICK*"
+  },
+  {
+    "id": "M4_ERR_010",
+    "difficulty": 5,
+    "question_type": "multiple_choice",
+    "concept": "exceptions",
+    "question": "Which exception is typically associated with an invalid index?",
+    "options": [
+      "KeyError",
+      "IndexError",
+      "ValueError",
+      "TypeError"
+    ],
+    "correct": "IndexError",
+    "explanation": "IndexError occurs when an index is outside the valid range. Allan tried opening Door #99 in a hallway that only had three doors. *THUD*"
+  }
+]

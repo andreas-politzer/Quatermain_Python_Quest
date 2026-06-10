@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M4_ERR_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "exceptions",
+    "question": "Wie nennt Python einen Laufzeitfehler?",
+    "options": [
+      "Exception",
+      "Loop",
+      "Function",
+      "Parameter"
+    ],
+    "correct": "Exception",
+    "explanation": "Exceptions signalisieren Fehler während der Programmausführung."
+  },
+  {
+    "id": "M4_ERR_002",
+    "difficulty": 1,
+    "question_type": "error_detection",
+    "concept": "zerodivisionerror",
+    "question": "Welche Exception tritt auf?\n\nprint(10 / 0)",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "ZeroDivisionError",
+      "IndexError"
+    ],
+    "correct": "ZeroDivisionError",
+    "explanation": "Division durch Null ist nicht erlaubt."
+  },
+  {
+    "id": "M4_ERR_003",
+    "difficulty": 2,
+    "question_type": "error_detection",
+    "concept": "nameerror",
+    "question": "Welche Exception tritt auf?\n\nprint(hero)",
+    "options": [
+      "TypeError",
+      "NameError",
+      "ValueError",
+      "KeyError"
+    ],
+    "correct": "NameError",
+    "explanation": "Die Variable wurde nie definiert."
+  },
+  {
+    "id": "M4_ERR_004",
+    "difficulty": 2,
+    "question_type": "error_detection",
+    "concept": "valueerror",
+    "question": "Welche Exception tritt auf?\n\nint(\"Python\")",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "NameError",
+      "IndexError"
+    ],
+    "correct": "ValueError",
+    "explanation": "Der String kann nicht in eine Ganzzahl umgewandelt werden."
+  },
+  {
+    "id": "M4_ERR_005",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "typeerror",
+    "question": "Welche Exception tritt auf?\n\nprint(\"5\" + 5)",
+    "options": [
+      "TypeError",
+      "ValueError",
+      "NameError",
+      "KeyError"
+    ],
+    "correct": "TypeError",
+    "explanation": "Ein String kann nicht direkt mit einer Zahl addiert werden."
+  },
+  {
+    "id": "M4_ERR_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "indexerror",
+    "question": "Welche Exception tritt auf?\n\nnumbers = [1, 2, 3]\nprint(numbers[10])",
+    "options": [
+      "KeyError",
+      "IndexError",
+      "ValueError",
+      "TypeError"
+    ],
+    "correct": "IndexError",
+    "explanation": "Der Index existiert nicht."
+  },
+  {
+    "id": "M4_ERR_007",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "keyerror",
+    "question": "Welche Exception tritt auf?\n\ndata = {\"name\": \"Allan\"}\nprint(data[\"age\"])",
+    "options": [
+      "IndexError",
+      "TypeError",
+      "KeyError",
+      "NameError"
+    ],
+    "correct": "KeyError",
+    "explanation": "Der Schlüssel existiert nicht im Dictionary."
+  },
+  {
+    "id": "M4_ERR_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "typeerror",
+    "question": "Welche Exception tritt auf?\n\nlen(5)",
+    "options": [
+      "ValueError",
+      "KeyError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": "TypeError",
+    "explanation": "len() erwartet ein Objekt mit Länge, keine Zahl."
+  },
+  {
+    "id": "M4_ERR_009",
+    "difficulty": 5,
+    "question_type": "error_detection",
+    "concept": "unboundlocalerror",
+    "question": "Welche Exception tritt auf?\n\nx = 10\n\ndef test():\n    print(x)\n    x = 5\n\ntest()",
+    "options": [
+      "NameError",
+      "ValueError",
+      "TypeError",
+      "UnboundLocalError"
+    ],
+    "correct": "UnboundLocalError",
+    "explanation": "Python behandelt x als lokale Variable und erkennt den Zugriff vor der Zuweisung."
+  },
+  {
+    "id": "M4_ERR_010",
+    "difficulty": 5,
+    "question_type": "multiple_choice",
+    "concept": "exceptions",
+    "question": "Welche Exception gehört typischerweise zu einem ungültigen Index?",
+    "options": [
+      "KeyError",
+      "IndexError",
+      "ValueError",
+      "TypeError"
+    ],
+    "correct": "IndexError",
+    "explanation": "IndexError tritt auf, wenn ein Index außerhalb des gültigen Bereichs liegt."
+  }
+]

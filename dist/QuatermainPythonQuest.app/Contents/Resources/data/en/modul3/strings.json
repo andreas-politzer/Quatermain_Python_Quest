@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M3_STR_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "strings",
+    "question": "Which expression is a string?",
+    "options": [
+      "\"Python\"",
+      "123",
+      "True",
+      "[1, 2, 3]"
+    ],
+    "correct": "\"Python\"",
+    "explanation": "Strings are written inside quotation marks. Allan recognizes ancient temple inscriptions the same way: if it's in quotes, it's text."
+  },
+  {
+    "id": "M3_STR_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "string_indexing",
+    "question": "What is the output?\n\ntext = \"Python\"\nprint(text[0])",
+    "options": [
+      "P",
+      "y",
+      "n",
+      "Error"
+    ],
+    "correct": "P",
+    "explanation": "The first character has index 0. Python starts counting from zero, just like every respectable arcade machine from 1987."
+  },
+  {
+    "id": "M3_STR_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "string_indexing",
+    "question": "What is the output?\n\ntext = \"Python\"\nprint(text[2])",
+    "options": [
+      "P",
+      "t",
+      "y",
+      "h"
+    ],
+    "correct": "t",
+    "explanation": "P=0, y=1, t=2. Allan carefully counts the symbols on the temple wall before pressing any suspicious buttons. *BEEP*"
+  },
+  {
+    "id": "M3_STR_004",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "string_indexing",
+    "question": "What is the output?\n\ntext = \"Python\"\nprint(text[-1])",
+    "options": [
+      "P",
+      "o",
+      "n",
+      "Error"
+    ],
+    "correct": "n",
+    "explanation": "The index -1 accesses the last character. Negative indices count backward from the end of the string."
+  },
+  {
+    "id": "M3_STR_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "strings",
+    "question": "What is the output?\n\nprint(\"Py\" + \"thon\")",
+    "options": [
+      "Py thon",
+      "Python",
+      "Python",
+      "Error"
+    ],
+    "correct": "Python",
+    "explanation": "The + operator concatenates strings. Allan joins two fragments of an ancient map and suddenly the route to the treasure becomes clear. *CLICK*"
+  },
+  {
+    "id": "M3_STR_006",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "strings",
+    "question": "What is the output?\n\nprint(\"Ha\" * 3)",
+    "options": [
+      "HaHa",
+      "HaHaHa",
+      "Ha 3",
+      "Error"
+    ],
+    "correct": "HaHaHa",
+    "explanation": "Strings can be repeated with *. Python duplicates the text the specified number of times."
+  },
+  {
+    "id": "M3_STR_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "strings",
+    "question": "What is the output?\n\ntext = \"Python\"\nprint(len(text))",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "Error"
+    ],
+    "correct": "6",
+    "explanation": "Python contains six characters. Allan counts them twice because the last temple puzzle was designed by someone who clearly hated explorers."
+  },
+  {
+    "id": "M3_STR_008",
+    "difficulty": 4,
+    "question_type": "error_detection",
+    "concept": "string_indexing",
+    "question": "Which exception occurs?\n\ntext = \"Python\"\nprint(text[10])",
+    "options": [
+      "ValueError",
+      "TypeError",
+      "IndexError",
+      "KeyError"
+    ],
+    "correct": "IndexError",
+    "explanation": "Index 10 does not exist. Python raises an IndexError when you try to access a position outside the valid range."
+  },
+  {
+    "id": "M3_STR_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "strings",
+    "question": "What is the output?\n\ntext = \"Python\"\nprint(text[0] + text[-1])",
+    "options": [
+      "Pn",
+      "Py",
+      "on",
+      "nn"
+    ],
+    "correct": "Pn",
+    "explanation": "The first character is P and the last character is n. Concatenating them produces Pn. *DING* Secret passage unlocked."
+  },
+  {
+    "id": "M3_STR_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "strings",
+    "question": "What is the output?\n\ntext = \"Python\"\nprint(len(text + \"3\"))",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "Error"
+    ],
+    "correct": "7",
+    "explanation": "After appending \"3\", the string contains seven characters. Allan Quatermain might expect a magical rune to appear, but Python simply counts the characters with cold machine precision. *BOOP*"
+  }
+]

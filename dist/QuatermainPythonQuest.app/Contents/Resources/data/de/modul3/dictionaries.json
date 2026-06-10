@@ -1,0 +1,152 @@
+[
+  {
+    "id": "M3_DCT_001",
+    "difficulty": 1,
+    "question_type": "multiple_choice",
+    "concept": "dictionaries",
+    "question": "Welcher Ausdruck erzeugt ein Dictionary?",
+    "options": [
+      "{\"name\": \"Allan\"}",
+      "[\"name\", \"Allan\"]",
+      "(\"name\", \"Allan\")",
+      "\"name\": \"Allan\""
+    ],
+    "correct": "{\"name\": \"Allan\"}",
+    "explanation": "Dictionaries werden mit geschweiften Klammern und Schlüssel-Wert-Paaren erstellt."
+  },
+  {
+    "id": "M3_DCT_002",
+    "difficulty": 1,
+    "question_type": "output_prediction",
+    "concept": "dictionary_access",
+    "question": "Was wird ausgegeben?\n\nhero = {\"name\": \"Allan\"}\nprint(hero[\"name\"])",
+    "options": [
+      "name",
+      "Allan",
+      "\"Allan\"",
+      "Error"
+    ],
+    "correct": "Allan",
+    "explanation": "Über den Schlüssel wird auf den zugehörigen Wert zugegriffen."
+  },
+  {
+    "id": "M3_DCT_003",
+    "difficulty": 2,
+    "question_type": "output_prediction",
+    "concept": "dictionary_access",
+    "question": "Was wird ausgegeben?\n\ndata = {\"a\": 10, \"b\": 20}\nprint(data[\"b\"])",
+    "options": [
+      "10",
+      "20",
+      "b",
+      "Error"
+    ],
+    "correct": "20",
+    "explanation": "Der Schlüssel \"b\" verweist auf den Wert 20."
+  },
+  {
+    "id": "M3_DCT_004",
+    "difficulty": 2,
+    "question_type": "multiple_choice",
+    "concept": "dictionary_keys",
+    "question": "Woraus besteht ein Dictionary?",
+    "options": [
+      "Indizes und Werte",
+      "Schlüssel und Werte",
+      "Nur Werte",
+      "Nur Schlüssel"
+    ],
+    "correct": "Schlüssel und Werte",
+    "explanation": "Ein Dictionary speichert Daten als Schlüssel-Wert-Paare."
+  },
+  {
+    "id": "M3_DCT_005",
+    "difficulty": 3,
+    "question_type": "output_prediction",
+    "concept": "dictionary_modification",
+    "question": "Was wird ausgegeben?\n\ndata = {\"x\": 1}\ndata[\"y\"] = 2\nprint(data)",
+    "options": [
+      "{\"x\": 1}",
+      "{\"y\": 2}",
+      "{\"x\": 1, \"y\": 2}",
+      "Error"
+    ],
+    "correct": "{\"x\": 1, \"y\": 2}",
+    "explanation": "Durch die Zuweisung wird ein neues Schlüssel-Wert-Paar hinzugefügt."
+  },
+  {
+    "id": "M3_DCT_006",
+    "difficulty": 3,
+    "question_type": "error_detection",
+    "concept": "dictionary_access",
+    "question": "Welche Exception tritt auf?\n\ndata = {\"x\": 1}\nprint(data[\"y\"])",
+    "options": [
+      "IndexError",
+      "ValueError",
+      "KeyError",
+      "TypeError"
+    ],
+    "correct": "KeyError",
+    "explanation": "Der Schlüssel \"y\" existiert nicht im Dictionary."
+  },
+  {
+    "id": "M3_DCT_007",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "dictionary_methods",
+    "question": "Was wird ausgegeben?\n\ndata = {\"x\": 1}\nprint(data.get(\"x\"))",
+    "options": [
+      "x",
+      "1",
+      "None",
+      "Error"
+    ],
+    "correct": "1",
+    "explanation": "get() liefert den Wert zum angegebenen Schlüssel."
+  },
+  {
+    "id": "M3_DCT_008",
+    "difficulty": 4,
+    "question_type": "code_analysis",
+    "concept": "dictionary_methods",
+    "question": "Was wird ausgegeben?\n\ndata = {\"x\": 1}\nprint(data.get(\"y\"))",
+    "options": [
+      "1",
+      "y",
+      "None",
+      "Error"
+    ],
+    "correct": "None",
+    "explanation": "get() liefert None, wenn der Schlüssel nicht existiert."
+  },
+  {
+    "id": "M3_DCT_009",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "dictionary_modification",
+    "question": "Was wird ausgegeben?\n\ndata = {\"a\": 1}\ndata[\"a\"] = 5\nprint(data[\"a\"])",
+    "options": [
+      "1",
+      "5",
+      "a",
+      "Error"
+    ],
+    "correct": "5",
+    "explanation": "Vorhandene Werte können über ihren Schlüssel überschrieben werden."
+  },
+  {
+    "id": "M3_DCT_010",
+    "difficulty": 5,
+    "question_type": "code_analysis",
+    "concept": "dictionary_methods",
+    "question": "Was wird ausgegeben?\n\ndata = {\"a\": 1, \"b\": 2}\ndel data[\"a\"]\nprint(data)",
+    "options": [
+      "{\"a\": 1, \"b\": 2}",
+      "{\"a\": 1}",
+      "{\"b\": 2}",
+      "Error"
+    ],
+    "correct": "{\"b\": 2}",
+    "explanation": "del entfernt das Schlüssel-Wert-Paar mit dem angegebenen Schlüssel. Allan Quatermain war erleichtert, dass man störende Tempelschlüssel einfacher loswird als Krokodile."
+  }
+]
